@@ -15,9 +15,11 @@ class Canvas {
       this.gl = this.canvas.getContext('webgl') || this.canvas.getContext('experimental-webgl');
       if (!(window.WebGLRenderingContext && this.gl && this.gl.getShaderPrecisionFormat)) {
         console.log("webgl非対応 1");
+        this.canvas.innerHTML = "webGL初期化失敗";
         return false;
       }
     } catch (e) {
+      this.canvas.innerHTML = "webGL 初期化失敗";
       console.log("webgl非対応 2: " + e);
       return false;
     }
