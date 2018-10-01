@@ -23,6 +23,7 @@ class Canvas {
       console.log("webgl非対応 2: " + e);
       return false;
     }
+    document.getElementById('message').innerHTML = "webGL 初期化成功";
     this.gl.viewport(0, -100, VIEWPORT_WIDTH,VIEWPORT_HEIGHT);//800*800のビューポートを上下100カット表示で使う
     this.texture = {};
     this.texHash = {};
