@@ -8,7 +8,7 @@ const CANVAS_HEIGHT = 600;
 class Canvas {
   constructor() {
     try {
-      document.getElementById('message').innerHTML = "webGL 初期化";
+      document.getElementById('message').innerHTML += "<div>webGL 初期化</div>";
       this.canvas = document.getElementById('canvas');
       this.canvas.width = CANVAS_WIDTH;
       this.canvas.height = CANVAS_HEIGHT;
@@ -23,7 +23,7 @@ class Canvas {
       console.log("webgl非対応 2: " + e);
       return false;
     }
-    document.getElementById('message').innerHTML = "webGL 初期化成功";
+    //document.getElementById('message').innerHTML = "webGL 初期化成功";
     this.gl.viewport(0, -100, VIEWPORT_WIDTH,VIEWPORT_HEIGHT);//800*800のビューポートを上下100カット表示で使う
     this.texture = {};
     this.texHash = {};
@@ -32,7 +32,7 @@ class Canvas {
     this.shader = new Shader(this.gl);
 
     this.canvas.addEventListener('click', this.onClick, false);
-    document.getElementById('message').innerHTML = "webGL 初期化完了";
+    //document.getElementById('message').innerHTML = "webGL 初期化完了";
   }
   onClick(e){
     var rect = e.target.getBoundingClientRect();
