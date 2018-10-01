@@ -8,7 +8,7 @@ const CANVAS_HEIGHT = 600;
 class Canvas {
   constructor() {
     try {
-
+      document.getElementById('message').innerHTML = "webGL 初期化";
       this.canvas = document.getElementById('canvas');
       this.canvas.width = CANVAS_WIDTH;
       this.canvas.height = CANVAS_HEIGHT;
@@ -32,7 +32,7 @@ class Canvas {
     this.shader = new Shader(this.gl);
 
     this.canvas.addEventListener('click', this.onClick, false);
-
+    document.getElementById('message').innerHTML = "webGL 初期化完了";
   }
   onClick(e){
     var rect = e.target.getBoundingClientRect();
