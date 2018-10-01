@@ -1,0 +1,15 @@
+body {
+        border: 0;
+        background-color: white;
+}
+canvas {
+        width: 800;
+        height: 600;
+        display: block;
+}
+.text {
+        position:absolute;
+        font-size:2em;
+        color: blue;
+        user-select: none;
+}
