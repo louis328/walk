@@ -2,63 +2,8 @@
     "images": [
         {
             "id": "back",
-            "path": "./img/back.jpg",
-            "comment":"背景"
-        },
-        {
-            "id": "back1",
-            "path": "./img/bg/1.png",
-            "comment":"背景1"
-        },
-        {
-            "id": "shadow",
-            "path": "./img/shadow.png",
-            "comment":"キャラの影"
-        },
-        {
-            "id": "frame_battle1",
-            "path": "./img/gui/frame_battle1.png",
-            "comment":"戦闘中のキャラ待機枠"
-        },
-        {
-            "id": "life",
-            "path": "./img/gui/life.png",
-            "comment":"体力バー"
-        },
-        {
-            "id": "face",
-            "path": "./img/gui/face/face.png",
-            "comment":"待機キャラアイコンサンプル"
-        },
-        {
-            "id": "circle",
-            "path": "./img/gui/circle.png",
-            "comment":"戦闘中のキャラ立ち枠"
-        },
-        {
-            "id": "black",
             "path": "./img/black.jpg",
-            "comment":"ブラックイン、ブラックアウト用"
-        },
-        {
-            "id": "stageSelect",
-            "path": "./img/gui/stageSelect.png",
-            "comment":"メニュー:ステージ選択"
-        },
-        {
-            "id": "stage1",
-            "path": "./img/gui/stage1.png",
-            "comment":"メニュー:ステージ1"
-        },
-        {
-            "id": "team",
-            "path": "./img/gui/team.png",
-            "comment":"メニュー:編成"
-        },
-        {
-            "id": "pinya",
-            "path": "./img/pinya.png",
-            "comment":"ぴにゃ"
+            "comment":"背景"
         }
     ]
 }
