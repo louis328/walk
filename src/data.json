@@ -4,6 +4,11 @@
             "id": "back",
             "path": "./img/black.jpg",
             "comment":"背景"
+        },
+        {
+            "id": "hiyoko",
+            "path": "./img/hiyoko.png",
+            "comment":"ひよこ"
         }
     ]
 }

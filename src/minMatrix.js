@@ -345,5 +345,5 @@ function qtnIV(){
 		return dest;
 	};
 }
-var qtLIB = new qtnIV();
-var matLIB = new matIV();
+export const qtLIB = new qtnIV();
+export const matLIB = new matIV();

@@ -1,5 +1,5 @@
 
-function create_shader(gl, id) {
+export function create_shader(gl, id) {
 	// シェーダを格納する変数
 	var shader;
 	// HTMLからscriptタグへの参照を取得
@@ -32,7 +32,7 @@ function create_shader(gl, id) {
 		alert(gl.getShaderInfoLog(shader));// 失敗していたらエラーログをアラートする
 	}
 }
-function create_program(gl, vs, fs) {
+export function create_program(gl, vs, fs) {
 	// プログラムオブジェクトの生成
 	var program = gl.createProgram();
 
@@ -57,7 +57,7 @@ function create_program(gl, vs, fs) {
 		alert(gl.getProgramInfoLog(program));
 	}
 }
-function create_vbo(gl, data) {
+export function create_vbo(gl, data) {
 	// バッファオブジェクトの生成
 	var vbo = gl.createBuffer();
 	// バッファをバインドする
@@ -70,7 +70,7 @@ function create_vbo(gl, data) {
 	return vbo;
 }
 // IBOを生成する関数
-function create_ibo(gl, data) {
+export function create_ibo(gl, data) {
 	// バッファオブジェクトの生成
 	var ibo = gl.createBuffer();
 	// バッファをバインドする
@@ -83,7 +83,7 @@ function create_ibo(gl, data) {
 	return ibo;
 }
 // VBOをバインドし登録する関数
-function set_attribute(gl, vbo, attL, attS) {
+export function set_attribute(gl, vbo, attL, attS) {
 	// 引数として受け取った配列を処理する
 	for (var i in vbo) {
 		// バッファをバインドする
@@ -94,7 +94,7 @@ function set_attribute(gl, vbo, attL, attS) {
 		gl.vertexAttribPointer(attL[i], attS[i], gl.FLOAT, false, 0, 0);
 	}
 }
-function checkImageSize(img) {
+export function checkImageSize(img) {
 	var w = img.naturalWidth, h = img.naturalHeight;
 	var size = Math.pow(2, Math.log(Math.max(w, h)) / Math.LN2 | 0); // largest 2^n integer that does not exceed s
 	if (w !== h || w !== size) {

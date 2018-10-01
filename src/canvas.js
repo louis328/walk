@@ -1,6 +1,6 @@
-import {Shader} from './shader.js';
+import {Shader, set_attribute} from './shader.js';
 import {messenger} from './messaenger.js';
-
+import {qtLIB, matLIB} from './minMatrix.js';
 const VIEWPORT_WIDTH = 800;
 const VIEWPORT_HEIGHT = 800;
 const CANVAS_WIDTH = 800;
@@ -77,7 +77,7 @@ class Canvas {
       if(target.getInvisible() == true){continue;}
       layerList[target.getLevel()].push(target);
     }
-    for (var i = 0; i < 20; ++i) {
+    for (var i = 19; i >= 0; --i) {
       var array = layerList[i];
       for (var j = 0; j < array.length; ++j) {
         var target = array[j];
@@ -91,7 +91,7 @@ class Canvas {
       var mMatrix = matLIB.identity(matLIB.create());
       matLIB.identity(mMatrix);
       
-      matLIB.translate(mMatrix, [target.getPosition().x / VIEWPORT_WIDTH * 2, (target.getPosition().y + target.getGap().y) / VIEWPORT_HEIGHT * 2, 0], mMatrix);
+      matLIB.translate(mMatrix, [target.getPosition().x / VIEWPORT_WIDTH * 2, (target.getPosition().y) / VIEWPORT_HEIGHT * 2, 0], mMatrix);
 
       matLIB.rotate(mMatrix, 0 , [0, 0, 1], mMatrix);
       matLIB.scale(mMatrix, [1.0 * texture.width / VIEWPORT_WIDTH * target.getScale().x, 1.0 * texture.height / VIEWPORT_HEIGHT * target.getScale().y, 1.0], mMatrix);
