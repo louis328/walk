@@ -3,6 +3,9 @@
   <head>
       <title>TEST</title>
       <script src="src/game.js" type="module"></script>
+      <script nomodule type=text/javascript>
+        document.getElementById('message').innerHTML += "<div>ES Modules未対応</div>";
+      </script>
       <link rel="stylesheet" href="css/style.css">
   </head>
   <script id="vs_2D" type="x-shader/x-vertex">

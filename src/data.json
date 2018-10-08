@@ -9,6 +9,11 @@
             "id": "hiyoko",
             "path": "./img/hiyoko.png",
             "comment":"ひよこ"
+        },
+        {
+            "id": "block",
+            "path": "./img/block.png",
+            "comment":"ブロック"
         }
     ]
 }

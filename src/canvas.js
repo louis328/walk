@@ -8,18 +8,15 @@ const CANVAS_HEIGHT = 600;
 class Canvas {
   constructor() {
     try {
-      document.getElementById('message').innerHTML += "<div>webGL 初期化</div>";
       this.canvas = document.getElementById('canvas');
       this.canvas.width = CANVAS_WIDTH;
       this.canvas.height = CANVAS_HEIGHT;
       this.gl = this.canvas.getContext('webgl') || this.canvas.getContext('experimental-webgl');
       if (!(window.WebGLRenderingContext && this.gl && this.gl.getShaderPrecisionFormat)) {
         console.log("webgl非対応 1");
-        document.getElementById('message').innerHTML = "webGL初期化失敗";
         return false;
       }
     } catch (e) {
-      document.getElementById('message').innerHTML = "webGL 初期化失敗";
       console.log("webgl非対応 2: " + e);
       return false;
     }
