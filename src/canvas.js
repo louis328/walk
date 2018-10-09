@@ -23,10 +23,7 @@ class Canvas {
       console.log("webgl非対応 2: " + e);
       return false;
     }
-    //スクロール無効
-    window.addEventListener('touchmove', function(event) {
-      event.preventDefault();
-    });
+
 
     this.gl.viewport(0, 0, VIEWPORT_WIDTH,VIEWPORT_HEIGHT);//800*800のビューポートを上下100カット表示で使う
     this.texture = {};

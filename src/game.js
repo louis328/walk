@@ -6,6 +6,13 @@ import {keyManager} from './keyManager.js';
 
 onload = function(){
 
+  document.documentElement.addEventListener('touchstart', function (e) {
+    e.preventDefault();
+  }, {passive: false});
+  document.documentElement.addEventListener('touchmove', function (e) {
+    e.preventDefault();
+  }, {passive: false});
+  
   let hiyoko = new Hiyoko();
   let blocks = new Blocks();
 
