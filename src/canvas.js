@@ -120,7 +120,7 @@ class Canvas {
   }
   getHeightDifference(){
     if(!PC_MODE){
-      return draw_y += (CANVAS_HEIGHT/4 - (VIEWPORT_HEIGHT - CANVAS_HEIGHT) / 2) / VIEWPORT_HEIGHT * 2;
+      return  (CANVAS_HEIGHT/4 - (VIEWPORT_HEIGHT - CANVAS_HEIGHT) / 2) / VIEWPORT_HEIGHT * 2;
     }
     else{
       return 0;
