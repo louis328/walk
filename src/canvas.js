@@ -98,8 +98,12 @@ class Canvas {
     if (texture != null) {
       var mMatrix = matLIB.identity(matLIB.create());
       matLIB.identity(mMatrix);
-      
-      matLIB.translate(mMatrix, [(target.getPosition().x - (VIEWPORT_WIDTH - CANVAS_WIDTH) / 2) / VIEWPORT_WIDTH * 2, (target.getPosition().y - (VIEWPORT_HEIGHT - CANVAS_HEIGHT) / 2) / VIEWPORT_HEIGHT * 2, 0], mMatrix);
+      let draw_x = (target.getPosition().x - (VIEWPORT_WIDTH - CANVAS_WIDTH) / 2) / VIEWPORT_WIDTH * 2;
+      let draw_y = (target.getPosition().y - (VIEWPORT_HEIGHT - CANVAS_HEIGHT) / 2) / VIEWPORT_HEIGHT * 2;
+      if(!PC_MODE){
+        draw_y += (CANVAS_HEIGHT/4 - (VIEWPORT_HEIGHT - CANVAS_HEIGHT) / 2) / VIEWPORT_HEIGHT * 2;
+      }
+      matLIB.translate(mMatrix, [draw_x, draw_y, 0], mMatrix);
 
       matLIB.rotate(mMatrix, target.getRotate() , [0, 0, 1], mMatrix);
       matLIB.scale(mMatrix, [1.0 * texture.width / VIEWPORT_WIDTH * target.getScale().x, 1.0 * texture.height / VIEWPORT_HEIGHT * target.getScale().y, 1.0], mMatrix);
