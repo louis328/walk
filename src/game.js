@@ -7,11 +7,11 @@ import {keyManager} from './keyManager.js';
 onload = function(){
 
   document.documentElement.addEventListener('touchstart', function (e) {
-    let x = e.changedTouches[0].pageX + CANVAS_WIDTH/2;
-    let y = CANVAS_HEIGHT/2 - e.changedTouches[0].pageY;
+    //let x = e.changedTouches[0].pageX + CANVAS_WIDTH/2;
+    //let y = CANVAS_HEIGHT/2 - e.changedTouches[0].pageY;
     let message = new Object();
-    message['x'] = x;
-    message['y'] = y;
+    message['x'] = 0;
+    message['y'] = 0;
     message['message'] = 'touchStart';
     messenger.receive(message);
     e.preventDefault();
