@@ -2,7 +2,7 @@ import {Shader, set_attribute} from './shader.js';
 import {messenger} from './messaenger.js';
 import {qtLIB, matLIB} from './minMatrix.js';
 
-const PC_MODE = ( window.innerHeight < window.innerWidth*1.5 ) ? (true) : false;
+const PC_MODE = ( window.innerHeight < window.innerWidth*1.3 ) ? (true) : false;
 const SIDE_LENGTH = ( window.innerWidth <  window.innerHeight) ? (window.innerHeight) : window.innerWidth;
 const VIEWPORT_WIDTH = ( PC_MODE ) ? (800) : SIDE_LENGTH;
 const VIEWPORT_HEIGHT = ( PC_MODE ) ? (800) : SIDE_LENGTH;
