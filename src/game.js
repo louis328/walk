@@ -7,7 +7,7 @@ import {keyManager} from './keyManager.js';
 onload = function(){
 
   document.documentElement.addEventListener('touchstart', function (e) {
-    let x = e.changedTouches[0].pageX - CANVAS_WIDTH/2;
+    let x = e.changedTouches[0].pageX;
     let y = CANVAS_HEIGHT/2 - e.changedTouches[0].pageY;
     let message = new Object();
     message['x'] = x;
