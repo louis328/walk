@@ -49,7 +49,7 @@ export class Hiyoko extends gameObject{
         
         let message = new Object();
         message['toID'] = "blocks";
-        message['purpose'] = "collision";
+        message['message'] = "collision";
         message['x'] = this.x;
         message['preX'] = this.preX;
         message['vecX'] = 1;
@@ -76,6 +76,13 @@ export class Hiyoko extends gameObject{
         }
         //
         this.image.setPosition(this.x, this.y);
-
+    }
+    receive(mes){
+        let message = mes['message'];
+        if(message === 'touchStart'){
+            this.x = mes['x'];
+            this.x = mes['y'];
+            this.image.setPosition(this.x, this.y);
+        }
     }
 }

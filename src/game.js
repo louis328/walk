@@ -7,6 +7,13 @@ import {keyManager} from './keyManager.js';
 onload = function(){
 
   document.documentElement.addEventListener('touchstart', function (e) {
+    let x = e.changedTouches[0].pageX;
+    let y = e.changedTouches[0].pageY;
+    let message = new Object();
+    message['x'] = x;
+    message['y'] = y;
+    message['message'] = 'touchStart';
+    messenger.receive(message);
     e.preventDefault();
   }, {passive: false});
   document.documentElement.addEventListener('touchmove', function (e) {

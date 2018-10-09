@@ -29,7 +29,7 @@ export class Blocks extends gameObject{
     }
     receive(mes){
         //console.log("receive: " + mes);
-        if(mes['purpose'] === "collision"){
+        if(mes['message'] === "collision"){
             let ret = new Object();
             ret['result'] = false;
             ret['landing'] = false;//着地判定

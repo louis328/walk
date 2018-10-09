@@ -8,11 +8,14 @@ class Messenger {
         for(let ID in this.objHash){
             let obj = this.objHash[ID];
             obj.process();
-
         }
         while(this.messageQueue.length != 0){
             let message = this.messageQueue.shift();
             console.log(message);
+            for(let ID in this.objHash){
+                let obj = this.objHash[ID];
+                obj.receive(message);
+            }
         }
     }
     receive(message){
