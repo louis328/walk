@@ -1,4 +1,4 @@
-import {canvas, CANVAS_WIDTH, CANVAS_HEIGHT} from './canvas.js';
+import {canvas} from './canvas.js';
 import {messenger} from './messaenger.js';
 import {Hiyoko} from './hiyoko.js';
 import {Blocks} from './blocks.js';
