@@ -100,9 +100,8 @@ class Canvas {
       matLIB.identity(mMatrix);
       let draw_x = (target.getPosition().x - (VIEWPORT_WIDTH - CANVAS_WIDTH) / 2) / VIEWPORT_WIDTH * 2;
       let draw_y = (target.getPosition().y - (VIEWPORT_HEIGHT - CANVAS_HEIGHT) / 2) / VIEWPORT_HEIGHT * 2;
-      if(!PC_MODE){
-        draw_y += (CANVAS_HEIGHT/4 - (VIEWPORT_HEIGHT - CANVAS_HEIGHT) / 2) / VIEWPORT_HEIGHT * 2;
-      }
+      draw_y += this.getHeightDifference();
+      
       matLIB.translate(mMatrix, [draw_x, draw_y, 0], mMatrix);
 
       matLIB.rotate(mMatrix, target.getRotate() , [0, 0, 1], mMatrix);
@@ -116,6 +115,14 @@ class Canvas {
       set_attribute(this.gl, target.getVBO(), this.shader.getLoc(), this.shader.getStr());
       this.gl.bindBuffer(this.gl.ELEMENT_ARRAY_BUFFER, target.getIBO());
       this.gl.drawElements(this.gl.TRIANGLES, target.getIndices(), this.gl.UNSIGNED_SHORT, 0);
+    }
+  }
+  getHeightDifference(){
+    if(!PC_MODE){
+      (CANVAS_HEIGHT/4 - (VIEWPORT_HEIGHT - CANVAS_HEIGHT) / 2) / VIEWPORT_HEIGHT * 2;
+    }
+    else{
+      return 0;
     }
   }
   //ループ末
