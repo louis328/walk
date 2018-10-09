@@ -81,8 +81,10 @@ export class Hiyoko extends gameObject{
         let message = mes['message'];
         if(message === 'touchStart'){
             this.x = mes['x'];
-            this.y = mes['y'];
-            this.image.setPosition(this.x, this.y + canvas.getHeightDifference());
+            this.y = mes['y'] + canvas.getHeightDifference();
+            this.jamp = 0;
+            this.speedY = 0;
+            this.image.setPosition(this.x, this.y);
         }
     }
 }
