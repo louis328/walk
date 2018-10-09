@@ -78,4 +78,10 @@ export class Polygon {
         this.scaleX = x;
         this.scaleY = y;
     }
+    getRotate(){
+        return this.rotate;
+    }
+    setRotate(r){
+        this.rotate = r;
+    }
 };

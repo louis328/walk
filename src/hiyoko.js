@@ -19,6 +19,8 @@ export class Hiyoko extends gameObject{
         this.jamp = 0;
         this.halfWidth = 20;
         this.halfHeight = 20;
+
+        this.time = 0;
     }
     process(){
         this.preX = this.x;
@@ -74,5 +76,6 @@ export class Hiyoko extends gameObject{
         }
         //
         this.image.setPosition(this.x, this.y);
+
     }
 }

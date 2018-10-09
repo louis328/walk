@@ -5,7 +5,6 @@ import {Blocks} from './blocks.js';
 import {keyManager} from './keyManager.js';
 
 onload = function(){
-  document.getElementById('message').innerHTML = "onload";
 
   let hiyoko = new Hiyoko();
   let blocks = new Blocks();

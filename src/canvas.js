@@ -3,10 +3,13 @@ import {messenger} from './messaenger.js';
 import {qtLIB, matLIB} from './minMatrix.js';
 const VIEWPORT_WIDTH = 800;
 const VIEWPORT_HEIGHT = 800;
-const CANVAS_WIDTH = 800;
-const CANVAS_HEIGHT = 600;
+const CANVAS_WIDTH = ( window.innerWidth > 600 ) ? (600) : window.innerWidth;
+const CANVAS_HEIGHT = ( window.innerHeight > 800 ) ? (800) : window.innerHeight;
 class Canvas {
   constructor() {
+    //console.log(document.body.scroll);
+    //document.getElementById('message').innerHTML = "<div>"+window.innerWidth + ":" + window.innerHeight+"</div>";
+    //document.getElementById('message').innerHTML += "<div>"+CANVAS_WIDTH + ":" + CANVAS_HEIGHT+"</div>";
     try {
       this.canvas = document.getElementById('canvas');
       this.canvas.width = CANVAS_WIDTH;
@@ -20,8 +23,8 @@ class Canvas {
       console.log("webgl非対応 2: " + e);
       return false;
     }
-    //document.getElementById('message').innerHTML = "webGL 初期化成功";
-    this.gl.viewport(0, -100, VIEWPORT_WIDTH,VIEWPORT_HEIGHT);//800*800のビューポートを上下100カット表示で使う
+    //
+    this.gl.viewport(0, 0, VIEWPORT_WIDTH,VIEWPORT_HEIGHT);//800*800のビューポートを上下100カット表示で使う
     this.texture = {};
     this.texHash = {};
     this.texCounter = 0;
@@ -91,9 +94,9 @@ class Canvas {
       var mMatrix = matLIB.identity(matLIB.create());
       matLIB.identity(mMatrix);
       
-      matLIB.translate(mMatrix, [target.getPosition().x / VIEWPORT_WIDTH * 2, (target.getPosition().y) / VIEWPORT_HEIGHT * 2, 0], mMatrix);
+      matLIB.translate(mMatrix, [(target.getPosition().x - (VIEWPORT_WIDTH - CANVAS_WIDTH) / 2) / VIEWPORT_WIDTH * 2, (target.getPosition().y - (VIEWPORT_HEIGHT - CANVAS_HEIGHT) / 2) / VIEWPORT_HEIGHT * 2, 0], mMatrix);
 
-      matLIB.rotate(mMatrix, 0 , [0, 0, 1], mMatrix);
+      matLIB.rotate(mMatrix, target.getRotate() , [0, 0, 1], mMatrix);
       matLIB.scale(mMatrix, [1.0 * texture.width / VIEWPORT_WIDTH * target.getScale().x, 1.0 * texture.height / VIEWPORT_HEIGHT * target.getScale().y, 1.0], mMatrix);
       
 
