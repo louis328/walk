@@ -1,10 +1,10 @@
 import {Shader, set_attribute} from './shader.js';
 import {messenger} from './messaenger.js';
 import {qtLIB, matLIB} from './minMatrix.js';
-const VIEWPORT_WIDTH = 800;
-const VIEWPORT_HEIGHT = 800;
-const CANVAS_WIDTH = ( window.innerWidth > 600 ) ? (600) : window.innerWidth;
-const CANVAS_HEIGHT = ( window.innerHeight > 800 ) ? (800) : window.innerHeight;
+const VIEWPORT_WIDTH = window.innerWidth;
+const VIEWPORT_HEIGHT = window.innerHeight;
+const CANVAS_WIDTH = ( window.innerWidth > 1200 ) ? (1200) : window.innerWidth;
+const CANVAS_HEIGHT = ( window.innerHeight > 1600 ) ? (1600) : window.innerHeight;
 class Canvas {
   constructor() {
     //console.log(document.body.scroll);
