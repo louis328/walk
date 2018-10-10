@@ -32,6 +32,19 @@ onload = function(){
       messenger.receive(message);
     }
     e.preventDefault();
+    document.documentElement.addEventListener('touchend', function (e) {
+      for(let i=0;i<e.changedTouches.length;++i){
+        let touch = e.changedTouches[i];
+        let x = touch.pageX - CANVAS_WIDTH/2;
+        let y = CANVAS_HEIGHT/2 - touch.pageY;
+        let message = new Object();
+        message['x'] = x;
+        message['y'] = y;
+        message['message'] = 'touchEnd';
+        messenger.receive(message);
+      }
+      e.preventDefault();
+    }, {passive: false});
   }, {passive: false});
   
   let hiyoko = new Hiyoko();

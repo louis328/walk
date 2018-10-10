@@ -5,6 +5,7 @@ import {messenger} from './messaenger.js';
 
 class Button{
     constructor(x,y,name){
+        this.on = false;
         this.x = x;
         this.y = y;
         this.image = new Polygon(name, 1);
@@ -26,29 +27,51 @@ export class ButtonController extends gameObject{
     }
     receive(mes){
         let message = mes['message'];
+        let button_on = this.buttonList[0];
+        let button_right = this.buttonList[1];
+        let button_left = this.buttonList[2];
         if(message === 'touchStart' || message === 'touchMove'){
             let touch_x = mes['x'];
             let touch_y = mes['y'];
             if(message === 'touchStart'){
-                let button_on = this.buttonList[0];
                 if((button_on.x - touch_x) * (button_on.x - touch_x) +(button_on.y - touch_y) * (button_on.y - touch_y) < 128*128){
-                    let newMessage = new Object();
-                    newMessage['message'] = 'button_on';
-                    this.send(newMessage);
+                    button_on.on = true;
                 }
             }
-            let button_right = this.buttonList[1];
             if((button_right.x - touch_x) * (button_right.x - touch_x) +(button_right.y - touch_y) * (button_right.y - touch_y) < 128*128){
-                let newMessage = new Object();
-                newMessage['message'] = 'button_right';
-                this.send(newMessage);
+                button_right.on = true;
             }
-            let button_left = this.buttonList[2];
+            else{
+                button_right.on = false;
+            }
             if((button_left.x - touch_x) * (button_left.x - touch_x) +(button_left.y - touch_y) * (button_left.y - touch_y) < 128*128){
-                let newMessage = new Object();
-                newMessage['message'] = 'button_left';
-                this.send(newMessage);
+                button_left.on = true;
             }
+            else{
+                button_left.on = false;
+            }
+        }
+        else if(message === 'touchEnd'){
+            button_right.on = false;
+            button_left.on = false;
+        }
+        if(button_on.on == true){
+            let newMessage = new Object();
+            newMessage['message'] = 'button_on';
+            this.send(newMessage);
+            button_on.on = false;
+        }
+        if(button_right.on == true){
+            let newMessage = new Object();
+            newMessage['message'] = 'button_right';
+            this.send(newMessage);
+            button_right.on = false;
+        }
+        if(button_left.on == true){
+            let newMessage = new Object();
+            newMessage['message'] = 'button_left';
+            this.send(newMessage);
+            button_left.on = false;
         }
     }
 }
