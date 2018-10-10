@@ -101,7 +101,7 @@ class Canvas {
       let draw_x = (target.getPosition().x - (VIEWPORT_WIDTH - CANVAS_WIDTH) / 2) / VIEWPORT_WIDTH * 2;
       let draw_y = (target.getPosition().y - (VIEWPORT_HEIGHT - CANVAS_HEIGHT) / 2) / VIEWPORT_HEIGHT * 2;
       if(!PC_MODE){
-        draw_y += this.getHeightDifference();
+        draw_y += this.getHeightDifference() / VIEWPORT_HEIGHT * 2;
       }
       matLIB.translate(mMatrix, [draw_x, draw_y, 0], mMatrix);
 
@@ -120,7 +120,7 @@ class Canvas {
   }
   getHeightDifference(){
     if(!PC_MODE){
-      return  (CANVAS_HEIGHT/4 - (VIEWPORT_HEIGHT - CANVAS_HEIGHT) / 2) / VIEWPORT_HEIGHT * 2;
+      return  (CANVAS_HEIGHT/4 - (VIEWPORT_HEIGHT - CANVAS_HEIGHT) / 2);
     }
     else{
       return 0;
