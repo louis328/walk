@@ -15,11 +15,11 @@ export class ButtonController extends gameObject{
     constructor(){
         super("button");
         this.buttonList = new Array();
-        let button1 = new Button(CANVAS_WIDTH/2-140, -300, "button1");
+        let button1 = new Button(CANVAS_WIDTH/2-200, -200, "button1");
         this.buttonList.push(button1);
-        let button2 = new Button(-CANVAS_WIDTH/2+400, -500, "button2");
+        let button2 = new Button(-CANVAS_WIDTH/2+400, -400, "button2");
         this.buttonList.push(button2);
-        let button3 = new Button(-CANVAS_WIDTH/2+140, -500, "button3");
+        let button3 = new Button(-CANVAS_WIDTH/2+140, -400, "button3");
         this.buttonList.push(button3);
 
     }
