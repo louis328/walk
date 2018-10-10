@@ -8,16 +8,29 @@ import { ButtonController } from './button.js';
 onload = function(){
 
   document.documentElement.addEventListener('touchstart', function (e) {
-    let x = e.changedTouches[0].pageX - CANVAS_WIDTH/2;
-    let y = CANVAS_HEIGHT/2 - e.changedTouches[0].pageY;
-    let message = new Object();
-    message['x'] = x;
-    message['y'] = y;
-    message['message'] = 'touchStart';
-    messenger.receive(message);
+    for(let i=0;i<e.changedTouches.length;++i){
+      let touch = e.changedTouches[i];
+      let x = touch.pageX - CANVAS_WIDTH/2;
+      let y = CANVAS_HEIGHT/2 - touch.pageY;
+      let message = new Object();
+      message['x'] = x;
+      message['y'] = y;
+      message['message'] = 'touchStart';
+      messenger.receive(message);
+    }
     e.preventDefault();
   }, {passive: false});
   document.documentElement.addEventListener('touchmove', function (e) {
+    for(let i=0;i<e.changedTouches.length;++i){
+      let touch = e.changedTouches[i];
+      let x = touch.pageX - CANVAS_WIDTH/2;
+      let y = CANVAS_HEIGHT/2 - touch.pageY;
+      let message = new Object();
+      message['x'] = x;
+      message['y'] = y;
+      message['message'] = 'touchMove';
+      messenger.receive(message);
+    }
     e.preventDefault();
   }, {passive: false});
   

@@ -19,7 +19,11 @@ export class Hiyoko extends gameObject{
         this.jamp = 0;
         this.halfWidth = 20;
         this.halfHeight = 20;
-
+        
+        this.actionMap = new Object();//仮想ボタン入力と制御を繋げる
+        this.actionMap['jump'] = false;
+        this.actionMap['right'] = false;
+        this.actionMap['left'] = false;
         this.time = 0;
     }
     process(){
@@ -34,15 +38,14 @@ export class Hiyoko extends gameObject{
             }
         }
 
-        if(keyManager.getKeyState(65)){
+        if(keyManager.getKeyState(65) || this.actionMap['left']){
             this.x -= 8;
         }
-        if(keyManager.getKeyState(68)){
+        if(keyManager.getKeyState(68) || this.actionMap['right']){
             this.x += 8;
         }
-        if(keyManager.getKeyState(87) && this.jamp == 0){
-            this.speedY += 28;
-            this.jamp += 1;
+        if((keyManager.getKeyState(87) || this.actionMap['jump']) && this.jamp == 0){
+            this.jump();
         }
         
         this.y += this.speedY;
@@ -52,14 +55,8 @@ export class Hiyoko extends gameObject{
         message['message'] = "collision";
         message['x'] = this.x;
         message['preX'] = this.preX;
-        message['vecX'] = 1;
-        if(this.x < this.preX){
-            message['vecX'] = -1;
-        }
-        message['vecY'] = 1;
-        if(this.y < this.preY){
-            message['vecY'] = -1;
-        }
+        message['vecX'] = (this.x < this.preX) ? -1 : 1;
+        message['vecY'] = (this.y < this.preY) ? -1 : 1;
         message['y'] = this.y;
         message['preY'] = this.preY;
         message['halfW'] = this.halfWidth;
@@ -74,8 +71,14 @@ export class Hiyoko extends gameObject{
                 this.speedY = 0;
             }
         }
-        //
         this.image.setPosition(this.x, this.y);
+        this.actionMap['jump'] = false;
+        this.actionMap['right'] = false;
+        this.actionMap['left'] = false;
+    }
+    jump(){
+        this.speedY += 28;
+        this.jamp += 1;
     }
     receive(mes){
         let message = mes['message'];
@@ -85,6 +88,15 @@ export class Hiyoko extends gameObject{
             this.jamp = 0;
             this.speedY = 0;
             this.image.setPosition(this.x, this.y);
+        }
+        else if(mesasge === 'button_on'){
+            this.actionMap['jump'] = true;
+        }
+        else if(mesasge === 'button_right'){
+            this.actionMap['right'] = true;
+        }
+        else if(mesasge === 'button_left'){
+            this.actionMap['left'] = true;
         }
     }
 }
