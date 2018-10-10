@@ -83,19 +83,19 @@ export class Hiyoko extends gameObject{
     receive(mes){
         let message = mes['message'];
         if(message === 'touchStart'){
-            this.x = mes['x'];
+            /*this.x = mes['x'];
             this.y = mes['y'] + canvas.getHeightDifference();
             this.jamp = 0;
             this.speedY = 0;
-            this.image.setPosition(this.x, this.y);
+            this.image.setPosition(this.x, this.y);*/
         }
-        else if(mesasge === 'button_on'){
+        else if(message === 'button_on'){
             this.actionMap['jump'] = true;
         }
-        else if(mesasge === 'button_right'){
+        else if(message === 'button_right'){
             this.actionMap['right'] = true;
         }
-        else if(mesasge === 'button_left'){
+        else if(message === 'button_left'){
             this.actionMap['left'] = true;
         }
     }

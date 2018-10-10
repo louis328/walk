@@ -18,7 +18,7 @@ export class ButtonController extends gameObject{
         this.buttonList = new Array();
         let button1 = new Button(CANVAS_WIDTH/2-200, -200, "button1");
         this.buttonList.push(button1);
-        let button2 = new Button(-CANVAS_WIDTH/2+400, -400, "button2");
+        let button2 = new Button(-CANVAS_WIDTH/2+400, -400+10, "button2");
         this.buttonList.push(button2);
         let button3 = new Button(-CANVAS_WIDTH/2+140, -400, "button3");
         this.buttonList.push(button3);
