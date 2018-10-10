@@ -14,6 +14,21 @@
             "id": "block",
             "path": "./img/block.png",
             "comment":"ブロック"
+        },
+        {
+            "id": "button1",
+            "path": "./img/button1.png",
+            "comment":"決定ボタン"
+        },
+        {
+            "id": "button2",
+            "path": "./img/button1.png",
+            "comment":"右"
+        },
+        {
+            "id": "button3",
+            "path": "./img/button1.png",
+            "comment":"左"
         }
     ]
 }
