@@ -2,22 +2,25 @@ import {gameObject} from './gameObject.js';
 import {canvas, CANVAS_WIDTH, CANVAS_HEIGHT} from './canvas.js';
 import {Polygon} from './polygon.js';
 
+class Button{
+    constructor(x,y,name){
+        this.x = x;
+        this.y = y;
+        this.image = new Polygon(name, 1);
+        this.image.setPosition(x, y - canvas.getHeightDifference());
+        canvas.setTarget(this.image);
+    }
+}
 export class ButtonController extends gameObject{
     constructor(){
         super("button");
         this.buttonList = new Array();
-        console.log("yeah");
-        let buttonImage1 = new Polygon("button1", 1);
-        buttonImage1.setPosition(CANVAS_WIDTH/2-140, -240);
-        canvas.setTarget(buttonImage1);
-        this.buttonList.push(buttonImage1);
-        let buttonImage2 = new Polygon("button2", 1);
-        buttonImage2.setPosition(-CANVAS_WIDTH/2+400, -440);
-        canvas.setTarget(buttonImage2);
-        this.buttonList.push(buttonImage2);
-        let buttonImage3 = new Polygon("button3", 1);
-        buttonImage3.setPosition(-CANVAS_WIDTH/2+140, -440);
-        canvas.setTarget(buttonImage3);
-        this.buttonList.push(buttonImage3);
+        let button1 = new Button(CANVAS_WIDTH/2-140, -200, "button1");
+        this.buttonList.push(button1);
+        let button2 = new Button(-CANVAS_WIDTH/2+400, -400, "button2");
+        this.buttonList.push(button2);
+        let button3 = new Button(-CANVAS_WIDTH/2+140, -400, "button3");
+        this.buttonList.push(button3);
+
     }
 }
