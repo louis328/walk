@@ -26,6 +26,27 @@ export class ButtonController extends gameObject{
         this.buttonList.push(button3);
 
     }
+    process(){
+        let button_on = this.buttonList[0];
+        let button_right = this.buttonList[1];
+        let button_left = this.buttonList[2];
+        if(button_on.on == true){
+            let newMessage = new Object();
+            newMessage['message'] = 'button_on';
+            this.send(newMessage);
+            button_on.on = false;
+        }
+        if(button_right.on == true){
+            let newMessage = new Object();
+            newMessage['message'] = 'button_right';
+            this.send(newMessage);
+        }
+        if(button_left.on == true){
+            let newMessage = new Object();
+            newMessage['message'] = 'button_left';
+            this.send(newMessage);
+        }
+    }
     receive(mes){
         let message = mes['message'];
         let button_on = this.buttonList[0];
@@ -80,22 +101,7 @@ export class ButtonController extends gameObject{
                 }
             }
 
-            if(button_on.on == true){
-                let newMessage = new Object();
-                newMessage['message'] = 'button_on';
-                this.send(newMessage);
-                button_on.on = false;
-            }
-            if(button_right.on == true){
-                let newMessage = new Object();
-                newMessage['message'] = 'button_right';
-                this.send(newMessage);
-            }
-            if(button_left.on == true){
-                let newMessage = new Object();
-                newMessage['message'] = 'button_left';
-                this.send(newMessage);
-            }
+            
             console.log(button_on.on + ", " + button_right.on + ", " + button_left.on);
         }
     }
