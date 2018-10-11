@@ -79,24 +79,24 @@ export class ButtonController extends gameObject{
                     button_left.id = -1;
                 }
             }
-        }
 
-        if(button_on.on == true){
-            let newMessage = new Object();
-            newMessage['message'] = 'button_on';
-            this.send(newMessage);
-            button_on.on = false;
+            if(button_on.on == true){
+                let newMessage = new Object();
+                newMessage['message'] = 'button_on';
+                this.send(newMessage);
+                button_on.on = false;
+            }
+            if(button_right.on == true){
+                let newMessage = new Object();
+                newMessage['message'] = 'button_right';
+                this.send(newMessage);
+            }
+            if(button_left.on == true){
+                let newMessage = new Object();
+                newMessage['message'] = 'button_left';
+                this.send(newMessage);
+            }
+            console.log(button_on.on + ", " + button_right.on + ", " + button_left.on);
         }
-        if(button_right.on == true){
-            let newMessage = new Object();
-            newMessage['message'] = 'button_right';
-            this.send(newMessage);
-        }
-        if(button_left.on == true){
-            let newMessage = new Object();
-            newMessage['message'] = 'button_left';
-            this.send(newMessage);
-        }
-        //console.log(button_on.on + ", " + button_right.on + ", " + button_left.on);
     }
 }
