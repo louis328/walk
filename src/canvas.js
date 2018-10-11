@@ -45,6 +45,12 @@ class Canvas {
     var y = -(e.clientY - rect.top - CANVAS_HEIGHT*0.5);
     //g_gameData.clickOn(x,y);
     console.log(x+", " + y);
+    let message = new Object();
+      message['x'] = 1;
+      message['y'] = 1;
+      message['identifier'] = 1;
+      message['message'] = 'touchStart';
+      messenger.receive(message);
   }
   //初期化
   init() {

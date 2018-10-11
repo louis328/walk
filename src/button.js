@@ -97,5 +97,6 @@ export class ButtonController extends gameObject{
             newMessage['message'] = 'button_left';
             this.send(newMessage);
         }
+        //console.log(button_on.on + ", " + button_right.on + ", " + button_left.on);
     }
 }
