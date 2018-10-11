@@ -15,6 +15,7 @@ onload = function(){
       let message = new Object();
       message['x'] = x;
       message['y'] = y;
+      message['identifier'] = touch.identifier;
       message['message'] = 'touchStart';
       messenger.receive(message);
     }
@@ -28,6 +29,7 @@ onload = function(){
       let message = new Object();
       message['x'] = x;
       message['y'] = y;
+      message['identifier'] = touch.identifier;
       message['message'] = 'touchMove';
       messenger.receive(message);
     }
@@ -40,6 +42,7 @@ onload = function(){
         let message = new Object();
         message['x'] = x;
         message['y'] = y;
+        message['identifier'] = touch.identifier;
         message['message'] = 'touchEnd';
         messenger.receive(message);
       }

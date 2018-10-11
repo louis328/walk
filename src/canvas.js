@@ -4,10 +4,10 @@ import {qtLIB, matLIB} from './minMatrix.js';
 
 export const PC_MODE = ( window.innerHeight < window.innerWidth*1.3 ) ? (true) : false;
 const SIDE_LENGTH = ( window.innerWidth <  window.innerHeight) ? (window.innerHeight) : window.innerWidth;
-const VIEWPORT_WIDTH = ( PC_MODE ) ? (800) : SIDE_LENGTH;
-const VIEWPORT_HEIGHT = ( PC_MODE ) ? (800) : SIDE_LENGTH;
-export const CANVAS_WIDTH = ( PC_MODE ) ? (800) : window.innerWidth;
-export const CANVAS_HEIGHT = ( PC_MODE ) ? (600) : window.innerHeight;
+const VIEWPORT_WIDTH = ( PC_MODE ) ? (900) : SIDE_LENGTH;
+const VIEWPORT_HEIGHT = ( PC_MODE ) ? (900) : SIDE_LENGTH;
+export const CANVAS_WIDTH = ( PC_MODE ) ? (900) : window.innerWidth;
+export const CANVAS_HEIGHT = ( PC_MODE ) ? (800) : window.innerHeight;
 
 class Canvas {
   constructor() {

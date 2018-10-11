@@ -6,6 +6,7 @@ import {messenger} from './messaenger.js';
 class Button{
     constructor(x,y,name){
         this.on = false;
+        this.id = null;//タッチイベントのidentifier
         this.x = x;
         this.y = y;
         this.image = new Polygon(name, 1);
@@ -30,7 +31,7 @@ export class ButtonController extends gameObject{
         let button_on = this.buttonList[0];
         let button_right = this.buttonList[1];
         let button_left = this.buttonList[2];
-        if(message === 'touchStart' || message === 'touchMove'){
+        if(message === 'touchStart' || message === 'touchMove' || message === 'touchEnd'){
             let touch_x = mes['x'];
             let touch_y = mes['y'];
             if(message === 'touchStart'){
@@ -38,23 +39,48 @@ export class ButtonController extends gameObject{
                     button_on.on = true;
                 }
             }
-            if((button_right.x - touch_x) * (button_right.x - touch_x) +(button_right.y - touch_y) * (button_right.y - touch_y) < 128*128){
-                button_right.on = true;
+            if(message !== 'touchEnd'){
+                if((button_right.x - touch_x) * (button_right.x - touch_x) +(button_right.y - touch_y) * (button_right.y - touch_y) < 128*128){
+                    if(button_right.on == false && (message === 'touchStart' || message === 'touchMove')){
+                        button_right.on = true;
+                        button_right.id = mes['identifier'];
+                    }
+                }
+                else{
+                    if(button_right.on && button_right.id == mes['identifier']){//押した指が範囲外に移動した
+                        button_right.on = false;
+                        button_right.id = null;
+                    }
+                }
             }
-            else{
-                button_right.on = false;
+            else{//touchEnd
+                if(button_right.on && button_right.id == mes['identifier']){
+                    button_right.on = false;
+                    button_right.id = null;
+                }
             }
-            if((button_left.x - touch_x) * (button_left.x - touch_x) +(button_left.y - touch_y) * (button_left.y - touch_y) < 128*128){
-                button_left.on = true;
+            if(message !== 'touchEnd'){
+                if((button_left.x - touch_x) * (button_left.x - touch_x) +(button_left.y - touch_y) * (button_left.y - touch_y) < 128*128){
+                    if(button_left.on == false && (message === 'touchStart' || message === 'touchMove')){
+                        button_left.on = true;
+                        button_left.id = mes['identifier'];
+                    }
+                }
+                else{
+                    if(button_left.on && button_left.id == mes['identifier']){//押した指が範囲外に移動した
+                        button_left.on = false;
+                        button_left.id = null;
+                    }
+                }
             }
-            else{
-                button_left.on = false;
+            else{//touchEnd
+                if(button_left.on && button_left.id == mes['identifier']){
+                    button_left.on = false;
+                    button_left.id = null;
+                }
             }
         }
-        else if(message === 'touchEnd'){
-            button_right.on = false;
-            button_left.on = false;
-        }
+
         if(button_on.on == true){
             let newMessage = new Object();
             newMessage['message'] = 'button_on';
@@ -65,13 +91,11 @@ export class ButtonController extends gameObject{
             let newMessage = new Object();
             newMessage['message'] = 'button_right';
             this.send(newMessage);
-            button_right.on = false;
         }
         if(button_left.on == true){
             let newMessage = new Object();
             newMessage['message'] = 'button_left';
             this.send(newMessage);
-            button_left.on = false;
         }
     }
 }
