@@ -6,7 +6,7 @@ import {messenger} from './messaenger.js';
 class Button{
     constructor(x,y,name){
         this.on = false;
-        this.id = null;//タッチイベントのidentifier
+        this.id = -1;//タッチイベントのidentifier
         this.x = x;
         this.y = y;
         this.image = new Polygon(name, 1);
@@ -47,16 +47,16 @@ export class ButtonController extends gameObject{
                     }
                 }
                 else{
-                    if(button_right.on && button_right.id == mes['identifier']){//押した指が範囲外に移動した
+                    if(button_right.on && button_right.id === mes['identifier']){//押した指が範囲外に移動した
                         button_right.on = false;
-                        button_right.id = null;
+                        button_right.id = -1;
                     }
                 }
             }
             else{//touchEnd
-                if(button_right.on && button_right.id == mes['identifier']){
+                if(button_right.on && button_right.id === mes['identifier']){
                     button_right.on = false;
-                    button_right.id = null;
+                    button_right.id = -1;
                 }
             }
             if(message !== 'touchEnd'){
@@ -67,16 +67,16 @@ export class ButtonController extends gameObject{
                     }
                 }
                 else{
-                    if(button_left.on && button_left.id == mes['identifier']){//押した指が範囲外に移動した
+                    if(button_left.on && button_left.id === mes['identifier']){//押した指が範囲外に移動した
                         button_left.on = false;
-                        button_left.id = null;
+                        button_left.id = -1;
                     }
                 }
             }
             else{//touchEnd
-                if(button_left.on && button_left.id == mes['identifier']){
+                if(button_left.on && button_left.id === mes['identifier']){
                     button_left.on = false;
-                    button_left.id = null;
+                    button_left.id = -1;
                 }
             }
         }
