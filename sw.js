@@ -7,6 +7,7 @@ var urlsToCache = [
 
 // インストール処理
 self.addEventListener('install', function(event) {
+    console.log("install");
     event.waitUntil(
         caches
             .open(CACHE_NAME)
@@ -18,6 +19,7 @@ self.addEventListener('install', function(event) {
 
 // リソースフェッチ時のキャッシュロード処理
 self.addEventListener('fetch', function(event) {
+    console.log("fetch");
     event.respondWith(
         caches
             .match(event.request)

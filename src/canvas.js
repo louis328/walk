@@ -7,7 +7,7 @@ const SIDE_LENGTH = ( window.innerWidth <  window.innerHeight) ? (window.innerHe
 const VIEWPORT_WIDTH = ( PC_MODE ) ? (900) : SIDE_LENGTH;
 const VIEWPORT_HEIGHT = ( PC_MODE ) ? (900) : SIDE_LENGTH;
 export const CANVAS_WIDTH = ( PC_MODE ) ? (900) : window.innerWidth;
-export const CANVAS_HEIGHT = ( PC_MODE ) ? (800) : window.innerHeight;
+export const CANVAS_HEIGHT = ( PC_MODE ) ? (675) : window.innerHeight;
 
 class Canvas {
   constructor() {

@@ -18,14 +18,14 @@ export class Blocks extends gameObject{
         super("blocks");
         this.blocks = new Array();
         this.blocks.push(new Block(0, 0));
-        this.blocks.push(new Block(300, -200));
-        this.blocks.push(new Block(150, -200));
+        this.blocks.push(new Block(300, -225));
+        this.blocks.push(new Block(150, -201));
         this.blocks.push(new Block(-150, -50));
-        this.blocks.push(new Block(0, -200));
-        this.blocks.push(new Block(-150, -200));
+        this.blocks.push(new Block(0, -230));
+        this.blocks.push(new Block(-150, -210));
         
         for(let i=0;i<16;++i){
-            this.blocks.push(new Block(64*i - 450, -400));
+            this.blocks.push(new Block(64*i - 450, -300));
         }
         this.blocks.push(new Block(-230, -330));
         this.blocks.push(new Block(-310, -270));
@@ -68,15 +68,14 @@ export class Blocks extends gameObject{
                         }
                     }
                     if(p_bottom < b_top){
-                        console.log(" 横向きに衝突");
                         if(!(p_left < b_right) || !(p_right > b_left)){
                             if(mes['vecX'] == 1){
                                 //右向きに衝突
-                                ret['x'] = mes['x'] - (a_right - b_left);console.log("  右向きに衝突");
+                                ret['x'] = mes['x'] - (a_right - b_left);
                             }
                             else{
                                 //左向きに衝突
-                                ret['x'] = mes['x'] + (b_right - a_left);console.log("  左向きに衝突");
+                                ret['x'] = mes['x'] + (b_right - a_left);
                             }
                         }
                     }
