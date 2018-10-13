@@ -124,7 +124,7 @@ class Canvas {
   getHeightDifference(){
     if(!PC_MODE){
       //return  (CANVAS_HEIGHT/4 - (VIEWPORT_HEIGHT - CANVAS_HEIGHT) / 2);
-      return CANVAS_HEIGHT/2 - PLAY_HEIGHT/2 - 10;
+      return CANVAS_HEIGHT/2 - PLAY_HEIGHT/2 - 8;
     }
     else{
       return 0;

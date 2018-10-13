@@ -7,47 +7,48 @@ export class Exterior extends gameObject{
         
         {
             let cournerImage = new Polygon("corner", 1); 
-            cournerImage.setPosition(PLAY_WIDTH/2, CANVAS_HEIGHT/2 - 2 - canvas.getHeightDifference());
+            cournerImage.setPosition(PLAY_WIDTH/2 + 8, CANVAS_HEIGHT/2 - canvas.getHeightDifference());
             canvas.setTarget(cournerImage);
         }
         {
             let cournerImage = new Polygon("corner", 1); 
-            cournerImage.setPosition(-PLAY_WIDTH/2, CANVAS_HEIGHT/2 - 2 - canvas.getHeightDifference());
+            cournerImage.setPosition(-PLAY_WIDTH/2 - 8, CANVAS_HEIGHT/2 - canvas.getHeightDifference());
             canvas.setTarget(cournerImage);
         }
         {
             let cournerImage = new Polygon("corner", 1); 
-            cournerImage.setPosition(PLAY_WIDTH/2, CANVAS_HEIGHT/2 - canvas.getHeightDifference() - 655);
+            cournerImage.setPosition(PLAY_WIDTH/2 + 8, CANVAS_HEIGHT/2 - canvas.getHeightDifference() - 655);
             canvas.setTarget(cournerImage);
         }
         {
             let cournerImage = new Polygon("corner", 1); 
-            cournerImage.setPosition(-PLAY_WIDTH/2, CANVAS_HEIGHT/2 - canvas.getHeightDifference() - 655);
+            cournerImage.setPosition(-PLAY_WIDTH/2 - 8, CANVAS_HEIGHT/2 - canvas.getHeightDifference() - 655);
             canvas.setTarget(cournerImage);
         }
         
         this.frameTop = new Polygon("frame", 1);
-        this.frameTop.setPosition(0, CANVAS_HEIGHT/2 - 2 - canvas.getHeightDifference());
-        this.frameTop.setScale((PLAY_WIDTH-16)/16, 1);
+        this.frameTop.setPosition(0, CANVAS_HEIGHT/2 - canvas.getHeightDifference());
+        this.frameTop.setScale((PLAY_WIDTH)/16, 1);
         canvas.setTarget(this.frameTop);
 
         this.frameRight = new Polygon("frame", 1);
-        this.frameRight.setPosition(PLAY_WIDTH/2, CANVAS_HEIGHT/4 - canvas.getHeightDifference() - 10);
+        this.frameRight.setPosition(PLAY_WIDTH/2 + 8, CANVAS_HEIGHT/4 - canvas.getHeightDifference());
         this.frameRight.setRotate(Math.PI / 2);
-        this.frameRight.setScale(CANVAS_HEIGHT/16*0.5, 1);
+        this.frameRight.setScale((PLAY_HEIGHT)/16, 1);
         canvas.setTarget(this.frameRight);
 
         this.frameLeft = new Polygon("frame", 1);
-        this.frameLeft.setPosition(-PLAY_WIDTH/2, CANVAS_HEIGHT/4 - canvas.getHeightDifference() - 11);
+        this.frameLeft.setPosition(-PLAY_WIDTH/2 - 8, CANVAS_HEIGHT/4 - canvas.getHeightDifference());
         this.frameLeft.setRotate(Math.PI / 2);
-        this.frameLeft.setScale((CANVAS_HEIGHT+4)/16*0.5, 1);
+        this.frameLeft.setScale((PLAY_HEIGHT)/16, 1);
         canvas.setTarget(this.frameLeft);
 
         this.frameBottom = new Polygon("frame", 1);
-        this.frameBottom.setPosition(2, CANVAS_HEIGHT/2 - canvas.getHeightDifference() - 655);
-        this.frameBottom.setScale((PLAY_WIDTH-18)/16, 1);
+        this.frameBottom.setPosition(0, CANVAS_HEIGHT/2 - canvas.getHeightDifference() - 655);
+        this.frameBottom.setScale((PLAY_WIDTH)/16, 1);
         canvas.setTarget(this.frameBottom);
-        console.log(CANVAS_WIDTH);console.log(CANVAS_HEIGHT);
+
+
         {
             let cournerImage = new Polygon("corner", 1); 
             cournerImage.setPosition(0, (-CANVAS_HEIGHT/2 + (CANVAS_HEIGHT-PLAY_HEIGHT)/2) - canvas.getHeightDifference() + 20);
