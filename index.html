@@ -8,37 +8,38 @@
       </script>
       <link rel="stylesheet" href="css/style.css">
       <link rel="manifest" href="manifest.json">
+  
+    <script id="vs_2D" type="x-shader/x-vertex">
+      uniform mat4 matrix;
+      attribute vec3 position;
+      attribute vec2 textureCoord;
+      varying   vec2 vTextureCoord;
+      void main(void){
+        vTextureCoord = textureCoord;
+        gl_Position = (matrix * vec4(position, 1.0));
+      }
+    </script>
+    <script id="fs_2D" type="x-shader/x-fragment">
+      precision mediump float;
+      uniform sampler2D texture;
+      varying vec2 vTextureCoord;
+      void main(void){
+        gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+        vec4 smpColor = texture2D(texture, vTextureCoord);
+        gl_FragColor.rgba = smpColor.rgba;
+      }
+    </script>
+    <script>
+          // ServiceWorker登録：https://developers.google.com/web/fundamentals/primers/service-workers/?hl=ja
+          if ('serviceWorker' in navigator) {
+              navigator.serviceWorker.register('sw.js').then(function(registration) {
+                  console.log('ServiceWorker registration successful with scope: ', registration.scope);
+              }).catch(function(err) {
+                  console.log('ServiceWorker registration failed: ', err);
+              });
+          }
+    </script>
   </head>
-  <script id="vs_2D" type="x-shader/x-vertex">
-    uniform mat4 matrix;
-    attribute vec3 position;
-    attribute vec2 textureCoord;
-    varying   vec2 vTextureCoord;
-    void main(void){
-      vTextureCoord = textureCoord;
-      gl_Position = (matrix * vec4(position, 1.0));
-    }
-  </script>
-  <script id="fs_2D" type="x-shader/x-fragment">
-    precision mediump float;
-    uniform sampler2D texture;
-    varying vec2 vTextureCoord;
-    void main(void){
-      gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
-      vec4 smpColor = texture2D(texture, vTextureCoord);
-      gl_FragColor.rgba = smpColor.rgba;
-    }
-  </script>
-  <script>
-        // ServiceWorker登録：https://developers.google.com/web/fundamentals/primers/service-workers/?hl=ja
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js').then(function(registration) {
-                console.log('ServiceWorker registration successful with scope: ', registration.scope);
-            }).catch(function(err) {
-                console.log('ServiceWorker registration failed: ', err);
-            });
-        }
-        </script>
   <body>
       <div id="main"><canvas id="canvas"></canvas></div>
   </body>
