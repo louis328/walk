@@ -20,7 +20,7 @@ export class Blocks extends gameObject{
         this.blocks.push(new Block(-60, 0));
         this.blocks.push(new Block(300, -225));
         this.blocks.push(new Block(150, -201));
-        this.blocks.push(new Block(-150, -50));
+        this.blocks.push(new Block(-150, 0));
         this.blocks.push(new Block(0, -230));
         this.blocks.push(new Block(-150, -210));
         
