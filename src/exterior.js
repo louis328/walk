@@ -5,24 +5,7 @@ export class Exterior extends gameObject{
     constructor(){
         super("exterior");
         
-        {
-            let cournerImage = new Polygon("corner", 1); 
-            cournerImage.setPosition(0, CANVAS_HEIGHT/2 + 4 - canvas.getHeightDifference());
-            cournerImage.setScale((CANVAS_WIDTH)/16, 1);
-            canvas.setTarget(cournerImage);
-        }
-        {
-            let cournerImage = new Polygon("corner", 1); 
-            cournerImage.setPosition(CANVAS_WIDTH / 2 + 4, 0 - canvas.getHeightDifference());
-            cournerImage.setScale((CANVAS_WIDTH - PLAY_WIDTH) / 16, CANVAS_HEIGHT / 16);
-            canvas.setTarget(cournerImage);
-        }
-        {
-            let cournerImage = new Polygon("corner", 1); 
-            cournerImage.setPosition(-CANVAS_WIDTH / 2 - 4, 0 - canvas.getHeightDifference());
-            cournerImage.setScale((CANVAS_WIDTH - PLAY_WIDTH) / 16, CANVAS_HEIGHT / 16);
-            canvas.setTarget(cournerImage);
-        }
+        
         
         this.frameTop = new Polygon("frame", 1);
         this.frameTop.setPosition(0, CANVAS_HEIGHT/2 - canvas.getHeightDifference());
@@ -46,7 +29,24 @@ export class Exterior extends gameObject{
         this.frameBottom.setScale((PLAY_WIDTH)/16, 1);
         canvas.setTarget(this.frameBottom);
 
-
+        {
+            let cournerImage = new Polygon("corner", 1); 
+            cournerImage.setPosition(0, CANVAS_HEIGHT/2 + 4 - canvas.getHeightDifference());
+            cournerImage.setScale((CANVAS_WIDTH)/16, 1);
+            canvas.setTarget(cournerImage);
+        }
+        {
+            let cournerImage = new Polygon("corner", 1); 
+            cournerImage.setPosition(CANVAS_WIDTH / 2 + 4, 0 - canvas.getHeightDifference());
+            cournerImage.setScale((CANVAS_WIDTH - PLAY_WIDTH) / 16, CANVAS_HEIGHT / 16);
+            canvas.setTarget(cournerImage);
+        }
+        {
+            let cournerImage = new Polygon("corner", 1); 
+            cournerImage.setPosition(-CANVAS_WIDTH / 2 - 4, 0 - canvas.getHeightDifference());
+            cournerImage.setScale((CANVAS_WIDTH - PLAY_WIDTH) / 16, CANVAS_HEIGHT / 16);
+            canvas.setTarget(cournerImage);
+        }
         {
             let cournerImage = new Polygon("corner", 1); 
             cournerImage.setPosition(0, (-CANVAS_HEIGHT/2 + (CANVAS_HEIGHT-PLAY_HEIGHT)/2) - canvas.getHeightDifference() + 4);
