@@ -51,8 +51,8 @@ export class Exterior extends gameObject{
 
         {
             let cournerImage = new Polygon("corner", 1); 
-            cournerImage.setPosition(0, -20 - CANVAS_HEIGHT/4 - canvas.getHeightDifference());
-            cournerImage.setScale(CANVAS_WIDTH/16, CANVAS_HEIGHT/32);
+            cournerImage.setPosition(0, 0 - CANVAS_HEIGHT/4 - canvas.getHeightDifference());
+            cournerImage.setScale(CANVAS_WIDTH/16, (CANVAS_HEIGHT-675)/16);
             canvas.setTarget(cournerImage);
         }
     }
