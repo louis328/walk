@@ -7,24 +7,16 @@ export class Exterior extends gameObject{
         
         {
             let cournerImage = new Polygon("corner", 1); 
-            cournerImage.setPosition(PLAY_WIDTH/2 + 8, CANVAS_HEIGHT/2 - canvas.getHeightDifference());
+            cournerImage.setPosition(0, CANVAS_HEIGHT/2 + 8 - canvas.getHeightDifference());
+            cournerImage.setScale((CANVAS_WIDTH)/16, 1);
             canvas.setTarget(cournerImage);
         }
         {
             let cournerImage = new Polygon("corner", 1); 
-            cournerImage.setPosition(-PLAY_WIDTH/2 - 8, CANVAS_HEIGHT/2 - canvas.getHeightDifference());
+            cournerImage.setPosition(0, CANVAS_HEIGHT/2 - 8 - PLAY_HEIGHT - canvas.getHeightDifference());
             canvas.setTarget(cournerImage);
         }
-        {
-            let cournerImage = new Polygon("corner", 1); 
-            cournerImage.setPosition(PLAY_WIDTH/2 + 8, CANVAS_HEIGHT/2 - canvas.getHeightDifference() - 655);
-            canvas.setTarget(cournerImage);
-        }
-        {
-            let cournerImage = new Polygon("corner", 1); 
-            cournerImage.setPosition(-PLAY_WIDTH/2 - 8, CANVAS_HEIGHT/2 - canvas.getHeightDifference() - 655);
-            canvas.setTarget(cournerImage);
-        }
+
         
         this.frameTop = new Polygon("frame", 1);
         this.frameTop.setPosition(0, CANVAS_HEIGHT/2 - canvas.getHeightDifference());
@@ -44,16 +36,16 @@ export class Exterior extends gameObject{
         canvas.setTarget(this.frameLeft);
 
         this.frameBottom = new Polygon("frame", 1);
-        this.frameBottom.setPosition(0, CANVAS_HEIGHT/2 - canvas.getHeightDifference() - 655);
+        this.frameBottom.setPosition(0, CANVAS_HEIGHT/2 - PLAY_HEIGHT - canvas.getHeightDifference());
         this.frameBottom.setScale((PLAY_WIDTH)/16, 1);
         canvas.setTarget(this.frameBottom);
 
 
         {
             let cournerImage = new Polygon("corner", 1); 
-            cournerImage.setPosition(0, (-CANVAS_HEIGHT/2 + (CANVAS_HEIGHT-PLAY_HEIGHT)/2) - canvas.getHeightDifference() + 20);
+            cournerImage.setPosition(0, (-CANVAS_HEIGHT/2 + (CANVAS_HEIGHT-PLAY_HEIGHT)/2) - canvas.getHeightDifference() + 4);
             cournerImage.setScale(CANVAS_WIDTH/16, (CANVAS_HEIGHT-PLAY_HEIGHT)/16);
-            //canvas.setTarget(cournerImage);
+            canvas.setTarget(cournerImage);
         }
     }
 }
