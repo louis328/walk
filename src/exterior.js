@@ -7,16 +7,22 @@ export class Exterior extends gameObject{
         
         {
             let cournerImage = new Polygon("corner", 1); 
-            cournerImage.setPosition(0, CANVAS_HEIGHT/2 + 8 - canvas.getHeightDifference());
+            cournerImage.setPosition(0, CANVAS_HEIGHT/2 + 4 - canvas.getHeightDifference());
             cournerImage.setScale((CANVAS_WIDTH)/16, 1);
             canvas.setTarget(cournerImage);
         }
         {
             let cournerImage = new Polygon("corner", 1); 
-            cournerImage.setPosition(0, CANVAS_HEIGHT/2 - 8 - PLAY_HEIGHT - canvas.getHeightDifference());
+            cournerImage.setPosition(CANVAS_WIDTH / 2 + 4, 0 - canvas.getHeightDifference());
+            cournerImage.setScale((CANVAS_WIDTH - PLAY_WIDTH) / 16, CANVAS_HEIGHT / 16);
             canvas.setTarget(cournerImage);
         }
-
+        {
+            let cournerImage = new Polygon("corner", 1); 
+            cournerImage.setPosition(-CANVAS_WIDTH / 2 - 4, 0 - canvas.getHeightDifference());
+            cournerImage.setScale((CANVAS_WIDTH - PLAY_WIDTH) / 16, CANVAS_HEIGHT / 16);
+            canvas.setTarget(cournerImage);
+        }
         
         this.frameTop = new Polygon("frame", 1);
         this.frameTop.setPosition(0, CANVAS_HEIGHT/2 - canvas.getHeightDifference());
