@@ -15,13 +15,13 @@ export class Exterior extends gameObject{
         this.frameRight = new Polygon("frame", 1);
         this.frameRight.setPosition(PLAY_WIDTH/2 + 8, (CANVAS_HEIGHT/2 - PLAY_HEIGHT / 2) - canvas.getHeightDifference());
         this.frameRight.setRotate(Math.PI / 2);
-        this.frameRight.setScale((PLAY_HEIGHT)/16, 1);
+        this.frameRight.setScale((PLAY_HEIGHT+32)/16, 1);
         canvas.setTarget(this.frameRight);
 
         this.frameLeft = new Polygon("frame", 1);
         this.frameLeft.setPosition(-PLAY_WIDTH/2 - 8, (CANVAS_HEIGHT/2 - PLAY_HEIGHT / 2) - canvas.getHeightDifference());
         this.frameLeft.setRotate(Math.PI / 2);
-        this.frameLeft.setScale((PLAY_HEIGHT)/16, 1);
+        this.frameLeft.setScale((PLAY_HEIGHT+32)/16, 1);
         canvas.setTarget(this.frameLeft);
 
         this.frameBottom = new Polygon("frame", 1);
