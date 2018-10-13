@@ -1,8 +1,8 @@
 var CACHE_NAME = 'pwa-sample-caches';
 var urlsToCache = [
-    '/',
-    '/css/style.css',
-    '/src/game.js'
+    '/walk',
+    '/walk/css/style.css',
+    '/walk/src/game.js'
 ];
 
 // インストール処理
