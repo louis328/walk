@@ -48,10 +48,10 @@ export class Exterior extends gameObject{
 
         this.frameBottom.setScale((CANVAS_WIDTH-18)/16, 1);
         canvas.setTarget(this.frameBottom);
-
+        console.log(CANVAS_WIDTH);console.log(CANVAS_HEIGHT);
         {
             let cournerImage = new Polygon("corner", 1); 
-            cournerImage.setPosition(0, (0 - (CANVAS_HEIGHT-675)/2) - canvas.getHeightDifference() - 20);
+            cournerImage.setPosition(0, (-CANVAS_HEIGHT/2 + (CANVAS_HEIGHT-675)/2) - canvas.getHeightDifference());
             cournerImage.setScale(CANVAS_WIDTH/16, (CANVAS_HEIGHT-675)/16);
             canvas.setTarget(cournerImage);
         }

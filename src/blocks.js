@@ -17,7 +17,7 @@ export class Blocks extends gameObject{
     constructor(){
         super("blocks");
         this.blocks = new Array();
-        this.blocks.push(new Block(0, 0));
+        this.blocks.push(new Block(60, 0));
         this.blocks.push(new Block(300, -225));
         this.blocks.push(new Block(150, -201));
         this.blocks.push(new Block(-150, -50));
