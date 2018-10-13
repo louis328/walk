@@ -9,7 +9,7 @@ class Button{
         this.id = -1;//タッチイベントのidentifier
         this.x = x;
         this.y = y;
-        this.image = new Polygon(name, 1);
+        this.image = new Polygon(name, 0);
         this.image.setPosition(x, y - canvas.getHeightDifference());
         canvas.setTarget(this.image);
     }

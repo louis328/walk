@@ -29,6 +29,16 @@
             "id": "button3",
             "path": "./img/button1.png",
             "comment":"左"
+        },
+        {
+            "id": "frame",
+            "path": "./img/exterior/frame.png",
+            "comment":"画面枠"
+        },
+        {
+            "id": "corner",
+            "path": "./img/exterior/corner.png",
+            "comment":"画面隅"
         }
     ]
 }

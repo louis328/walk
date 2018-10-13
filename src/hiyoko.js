@@ -8,7 +8,7 @@ export class Hiyoko extends gameObject{
     constructor() {
         super("hiyoko");
 
-        this.image = new Polygon("hiyoko", 0);
+        this.image = new Polygon("hiyoko", 5);
         canvas.setTarget(this.image);
 
         this.x = 0;

@@ -4,9 +4,9 @@ import {Hiyoko} from './hiyoko.js';
 import {Blocks} from './blocks.js';
 import {keyManager} from './keyManager.js';
 import { ButtonController } from './button.js';
+import { Exterior } from './exterior.js';
 
 onload = function(){
-
   document.documentElement.addEventListener('touchstart', function (e) {
     for(let i=0;i<e.changedTouches.length;++i){
       let touch = e.changedTouches[i];
@@ -55,6 +55,7 @@ onload = function(){
   let buttonController  = null;
   if(!PC_MODE){
     buttonController = new ButtonController();
+    let exterior = new Exterior();
   }
 
   (function func (){

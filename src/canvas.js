@@ -4,10 +4,12 @@ import {qtLIB, matLIB} from './minMatrix.js';
 
 export const PC_MODE = ( window.innerHeight < window.innerWidth*1.3 ) ? (true) : false;
 const SIDE_LENGTH = ( window.innerWidth <  window.innerHeight) ? (window.innerHeight) : window.innerWidth;
-const VIEWPORT_WIDTH = ( PC_MODE ) ? (900) : SIDE_LENGTH;
-const VIEWPORT_HEIGHT = ( PC_MODE ) ? (900) : SIDE_LENGTH;
-export const CANVAS_WIDTH = ( PC_MODE ) ? (900) : window.innerWidth;
-export const CANVAS_HEIGHT = ( PC_MODE ) ? (675) : window.innerHeight;
+const PLAY_WIDTH = 900;
+const PLAY_HEIGHT = 675;
+const VIEWPORT_WIDTH = ( PC_MODE ) ? (PLAY_WIDTH) : SIDE_LENGTH;
+const VIEWPORT_HEIGHT = ( PC_MODE ) ? (PLAY_WIDTH) : SIDE_LENGTH;
+export const CANVAS_WIDTH = ( PC_MODE ) ? (PLAY_WIDTH) : window.innerWidth;
+export const CANVAS_HEIGHT = ( PC_MODE ) ? (PLAY_HEIGHT) : window.innerHeight;
 
 class Canvas {
   constructor() {
@@ -75,17 +77,18 @@ class Canvas {
   //描画
   draw() {
     this.gl.useProgram(this.shader.getPrg());
-    var layerList = new Array();
+
+    let layerList = new Array();
     for (var i = 0; i < 20; ++i) {
       layerList.push(new Array());
     }
 
-    for (var i = 0; i < this.drawTargets.length; ++i) {
-      var target = this.drawTargets[i];
+    for (let i = 0; i < this.drawTargets.length; ++i) {
+      let target = this.drawTargets[i];
       if(target.getInvisible() == true){continue;}
       layerList[target.getLevel()].push(target);
     }
-    for (var i = 19; i >= 0; --i) {
+    for (var i = (layerList.length-1); i >= 0; --i) {
       var array = layerList[i];
       for (var j = 0; j < array.length; ++j) {
         var target = array[j];
@@ -93,7 +96,7 @@ class Canvas {
       }
     }
   }
-  drawTarget(target){
+  drawTarget(target, level){
     var texture = this.texture[this.texHash[target.getTextureName()]];
     if (texture != null) {
       var mMatrix = matLIB.identity(matLIB.create());
@@ -120,7 +123,8 @@ class Canvas {
   }
   getHeightDifference(){
     if(!PC_MODE){
-      return  (CANVAS_HEIGHT/4 - (VIEWPORT_HEIGHT - CANVAS_HEIGHT) / 2);
+      //return  (CANVAS_HEIGHT/4 - (VIEWPORT_HEIGHT - CANVAS_HEIGHT) / 2);
+      return CANVAS_HEIGHT/2 - PLAY_HEIGHT/2 - 10;
     }
     else{
       return 0;
