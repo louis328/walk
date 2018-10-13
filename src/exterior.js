@@ -1,5 +1,5 @@
 import {gameObject} from './gameObject.js';
-import {canvas, CANVAS_WIDTH, CANVAS_HEIGHT} from './canvas.js';
+import {canvas, CANVAS_WIDTH, CANVAS_HEIGHT, PLAY_WIDTH, PLAY_HEIGHT} from './canvas.js';
 import {Polygon} from './polygon.js';
 export class Exterior extends gameObject{
     constructor(){
@@ -28,7 +28,7 @@ export class Exterior extends gameObject{
         
         this.frameTop = new Polygon("frame", 1);
         this.frameTop.setPosition(0, CANVAS_HEIGHT/2 - 2 - canvas.getHeightDifference());
-        this.frameTop.setScale((CANVAS_WIDTH-16)/16, 1);
+        this.frameTop.setScale((PLAY_WIDTH-16)/16, 1);
         canvas.setTarget(this.frameTop);
 
         this.frameRight = new Polygon("frame", 1);
@@ -45,14 +45,13 @@ export class Exterior extends gameObject{
 
         this.frameBottom = new Polygon("frame", 1);
         this.frameBottom.setPosition(2, CANVAS_HEIGHT/2 - canvas.getHeightDifference() - 655);
-
-        this.frameBottom.setScale((CANVAS_WIDTH-18)/16, 1);
+        this.frameBottom.setScale((PLAY_WIDTH-18)/16, 1);
         canvas.setTarget(this.frameBottom);
         console.log(CANVAS_WIDTH);console.log(CANVAS_HEIGHT);
         {
             let cournerImage = new Polygon("corner", 1); 
-            cournerImage.setPosition(0, (-CANVAS_HEIGHT/2 + (CANVAS_HEIGHT-675)/2) - canvas.getHeightDifference() + 20);
-            cournerImage.setScale(CANVAS_WIDTH/16, (CANVAS_HEIGHT-675)/16);
+            cournerImage.setPosition(0, (-CANVAS_HEIGHT/2 + (CANVAS_HEIGHT-PLAY_HEIGHT)/2) - canvas.getHeightDifference() + 20);
+            cournerImage.setScale(CANVAS_WIDTH/16, (CANVAS_HEIGHT-PLAY_HEIGHT)/16);
             canvas.setTarget(cournerImage);
         }
     }
