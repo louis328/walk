@@ -7,22 +7,22 @@ export class Exterior extends gameObject{
         
         {
             let cournerImage = new Polygon("corner", 1); 
-            cournerImage.setPosition(458,CANVAS_HEIGHT/2 - 2 - canvas.getHeightDifference());
+            cournerImage.setPosition(PLAY_WIDTH/2, CANVAS_HEIGHT/2 - 2 - canvas.getHeightDifference());
             canvas.setTarget(cournerImage);
         }
         {
             let cournerImage = new Polygon("corner", 1); 
-            cournerImage.setPosition(-458,CANVAS_HEIGHT/2 - 2 - canvas.getHeightDifference());
+            cournerImage.setPosition(-PLAY_WIDTH/2, CANVAS_HEIGHT/2 - 2 - canvas.getHeightDifference());
             canvas.setTarget(cournerImage);
         }
         {
             let cournerImage = new Polygon("corner", 1); 
-            cournerImage.setPosition(458,CANVAS_HEIGHT/2 - canvas.getHeightDifference() - 655);
+            cournerImage.setPosition(PLAY_WIDTH/2, CANVAS_HEIGHT/2 - canvas.getHeightDifference() - 655);
             canvas.setTarget(cournerImage);
         }
         {
             let cournerImage = new Polygon("corner", 1); 
-            cournerImage.setPosition(-458,CANVAS_HEIGHT/2 - canvas.getHeightDifference() - 655);
+            cournerImage.setPosition(-PLAY_WIDTH/2, CANVAS_HEIGHT/2 - canvas.getHeightDifference() - 655);
             canvas.setTarget(cournerImage);
         }
         
@@ -32,13 +32,13 @@ export class Exterior extends gameObject{
         canvas.setTarget(this.frameTop);
 
         this.frameRight = new Polygon("frame", 1);
-        this.frameRight.setPosition(458, CANVAS_HEIGHT/4 - canvas.getHeightDifference() - 10);
+        this.frameRight.setPosition(PLAY_WIDTH/2, CANVAS_HEIGHT/4 - canvas.getHeightDifference() - 10);
         this.frameRight.setRotate(Math.PI / 2);
         this.frameRight.setScale(CANVAS_HEIGHT/16*0.5, 1);
         canvas.setTarget(this.frameRight);
 
         this.frameLeft = new Polygon("frame", 1);
-        this.frameLeft.setPosition(-458, CANVAS_HEIGHT/4 - canvas.getHeightDifference() - 11);
+        this.frameLeft.setPosition(-PLAY_WIDTH/2, CANVAS_HEIGHT/4 - canvas.getHeightDifference() - 11);
         this.frameLeft.setRotate(Math.PI / 2);
         this.frameLeft.setScale((CANVAS_HEIGHT+4)/16*0.5, 1);
         canvas.setTarget(this.frameLeft);
