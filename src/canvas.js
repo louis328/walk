@@ -114,6 +114,7 @@ class Canvas {
 
 
       this.shader.setMatrix(mMatrix);
+      this.shader.setUV(target.getUVArray());
 
       this.gl.bindTexture(this.gl.TEXTURE_2D, texture);
       set_attribute(this.gl, target.getVBO(), this.shader.getLoc(), this.shader.getStr());

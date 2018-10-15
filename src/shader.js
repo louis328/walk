@@ -120,15 +120,19 @@ export class Shader {
 		this.attLocation[1] = gl.getAttribLocation(this.prg, 'textureCoord');
 
 		this.attStride = new Array(2);
-		this.attStride[0] = 3;
-		this.attStride[1] = 2;
+		this.attStride[0] = 3;//3個ずつ
+		this.attStride[1] = 1;//1個ずつ
 
 		this.uniLocation = new Array();
 		this.uniLocation[0] = gl.getUniformLocation(this.prg, 'matrix');
-		this.uniLocation[1] = gl.getUniformLocation(this.prg, 'texture');
+		this.uniLocation[1] = gl.getUniformLocation(this.prg, 'UVArray');
+		this.uniLocation[2] = gl.getUniformLocation(this.prg, 'texture');
 	}
 	setMatrix(matrix) {
 		this.gl.uniformMatrix4fv(this.uniLocation[0], false, matrix);
+	}
+	setUV(uvArray){
+		this.gl.uniform2fv (this.uniLocation[1], uvArray);
 	}
 	getPrg() {
 		return this.prg;

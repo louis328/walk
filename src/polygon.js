@@ -13,6 +13,8 @@ export class Polygon {
         this.x = 0;
         this.y = 0;
 
+        this.mirror = false;
+
         this.vertex_position = //3*4
 		[
 			-1.0, 1.0, 0.0,
@@ -26,7 +28,11 @@ export class Polygon {
         ];
         this.textureCoord = 
 		[
-			0,0, 1,0, 0,1, 1,1
+            0,1,2,3
+        ];
+        this.uvArray = 
+		[
+            0,0, 1,0, 0,1, 1,1
 		];
         this.vertices = this.vertex_position.length;
         this.indices = 	this.vertex_index.length;
@@ -83,5 +89,11 @@ export class Polygon {
     }
     setRotate(r){
         this.rotate = r;
+    }
+    getUVArray(){
+        return this.uvArray;
+    }
+    setUVArray(uv){
+        this.uvArray = uv;
     }
 };
