@@ -35,11 +35,13 @@ class Canvas {
     this.texture = {};
     this.texHash = {};
     this.texCounter = 0;
+    this.texHashSize = 0;
     this.drawTargets = new Array();
     this.shader = new Shader(this.gl);
 
     this.canvas.addEventListener('click', this.onClick, false);
     //document.getElementById('message').innerHTML = "webGL 初期化完了";
+    this.loadComplete = false;
   }
   onClick(e){
     var rect = e.target.getBoundingClientRect();
@@ -148,6 +150,7 @@ class Canvas {
     var json = JSON.parse(jsonTexture);
     var array = json.images;
     //console.log(array);
+    this.texHashSize = array.length;
     for (var i = 0; i < array.length; ++i) {
       var obj = array[i];
       this.createTexture(obj.path, obj.id);
@@ -183,14 +186,30 @@ class Canvas {
       canvas.texture[canvas.texCounter] = tex;
       canvas.texHash[name] = canvas.texCounter;
       ++canvas.texCounter;
-      
     };
+  }
+  getTexture(name){
+    let cnt = this.texHash[name];
+    if(cnt != undefined){
+      return this.texture[cnt];
+    }
+    else{
+      return null;
+    }
   }
   getGL() {
     return this.gl;
   }
   setTarget(polygon) {
     this.drawTargets.push(polygon);
+  }
+  isLoaded(){
+    return this.loadComplete;
+  }
+  loaded(){
+    //設定された画像数と読み込んだ画像数が一致するか否か
+    console.log(this.texCounter);
+    return (this.texCounter == this.texHashSize);
   }
 }
 export const canvas = new Canvas();

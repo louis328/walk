@@ -12,8 +12,8 @@ export class Polygon {
         this.scaleY = 1.0;
         this.x = 0;
         this.y = 0;
-
-        this.mirror = false;
+        this.width = canvas.getTexture(this.name).width;
+        this.height = canvas.getTexture(this.name).height;
 
         this.vertex_position = //3*4
 		[
@@ -95,5 +95,13 @@ export class Polygon {
     }
     setUVArray(uv){
         this.uvArray = uv;
+    }
+    setPxToUVArray(uv){//ピクセル値→UV値(0~1)
+        this.uvArray = [
+            uv[0] / this.width, uv[1] / this.height, 
+            uv[2] / this.width, uv[3] / this.height, 
+            uv[4] / this.width,uv[5] / this.height, 
+            uv[6] / this.width ,uv[7] / this.height
+        ];
     }
 };

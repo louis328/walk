@@ -45,6 +45,7 @@ export class Hiyoko extends gameObject{
         if(keyManager.getKeyState(68) || this.actionMap['right']){
             this.x += 8;
             this.image.setUVArray([0,0, 1,0, 0,1, 1,1]);
+            this.image.setPxToUVArray([10,10, 50,10, 10,50, 50,50]);
         }
         if((keyManager.getKeyState(87) || this.actionMap['jump']) && this.jamp == 0){
             this.jump();

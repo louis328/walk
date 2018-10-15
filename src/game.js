@@ -49,7 +49,9 @@ onload = function(){
     }
     e.preventDefault();
   }, {passive: false});
-  
+  while(!canvas.loaded()){
+
+  }
   let hiyoko = new Hiyoko();
   let blocks = new Blocks();
   let buttonController  = null;
@@ -57,7 +59,7 @@ onload = function(){
     buttonController = new ButtonController();
     let exterior = new Exterior();
   }
-
+  
   (function func (){
     keyManager.process();
     messenger.process();
