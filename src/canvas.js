@@ -111,7 +111,9 @@ class Canvas {
       matLIB.translate(mMatrix, [draw_x, draw_y, 0], mMatrix);
 
       matLIB.rotate(mMatrix, target.getRotate() , [0, 0, 1], mMatrix);
-      matLIB.scale(mMatrix, [1.0 * texture.width / VIEWPORT_WIDTH * target.getScale().x, 1.0 * texture.height / VIEWPORT_HEIGHT * target.getScale().y, 1.0], mMatrix);
+      let scaleX = 1.0 * texture.width / VIEWPORT_WIDTH * target.getScale().x;
+      let scaleY = 1.0 * texture.height / VIEWPORT_HEIGHT * target.getScale().y;
+      matLIB.scale(mMatrix, [scaleX, scaleY, 1.0], mMatrix);
       
 
 

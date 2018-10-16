@@ -1,44 +1,12 @@
 {
     "images": [
-        {
-            "id": "back",
-            "path": "./img/black.jpg",
-            "comment":"背景"
-        },
-        {
-            "id": "hiyoko",
-            "path": "./img/hiyoko.png",
-            "comment":"ひよこ"
-        },
-        {
-            "id": "block",
-            "path": "./img/block.png",
-            "comment":"ブロック"
-        },
-        {
-            "id": "button1",
-            "path": "./img/button1.png",
-            "comment":"決定ボタン"
-        },
-        {
-            "id": "button2",
-            "path": "./img/button1.png",
-            "comment":"右"
-        },
-        {
-            "id": "button3",
-            "path": "./img/button1.png",
-            "comment":"左"
-        },
-        {
-            "id": "frame",
-            "path": "./img/exterior/frame.png",
-            "comment":"画面枠"
-        },
-        {
-            "id": "corner",
-            "path": "./img/exterior/corner.png",
-            "comment":"画面隅"
-        }
+        {"id": "back", "path": "./img/black.jpg"},
+        {"id": "hiyoko", "path": "./img/hiyoko.png"},
+        {"id": "block", "path": "./img/block.png"},
+        {"id": "button1", "path": "./img/button1.png"},
+        {"id": "button2","path": "./img/button1.png"},
+        {"id": "button3", "path": "./img/button1.png"},
+        {"id": "frame", "path": "./img/exterior/frame.png"},
+        {"id": "corner", "path": "./img/exterior/corner.png"}
     ]
 }

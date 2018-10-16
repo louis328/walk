@@ -96,12 +96,24 @@ export class Polygon {
     setUVArray(uv){
         this.uvArray = uv;
     }
-    setPxToUVArray(uv){//ピクセル値→UV値(0~1)
+    setPxToUVArray(startX,startY, endX,endY){//ピクセル値→UV値(0~1)
+        this.scaleX = Math.abs(endX - startX) / this.width;
+        this.scaleY = Math.abs(endY - startY) / this.height;
         this.uvArray = [
-            uv[0] / this.width, uv[1] / this.height, 
-            uv[2] / this.width, uv[3] / this.height, 
-            uv[4] / this.width,uv[5] / this.height, 
-            uv[6] / this.width ,uv[7] / this.height
+            startX / this.width, startY / this.height, 
+            endX / this.width, startY / this.height, 
+            startX / this.width,endY / this.height, 
+            endX / this.width ,endY / this.height
+        ];
+    }
+    setPxToUVArrayReverse(startX,startY, endX,endY){//左右反転
+        this.scaleX = (endX - startX) / this.width;
+        this.scaleY = (endY - startY) / this.height;
+        this.uvArray = [
+            startX / this.width, startY / this.height, 
+            endX / this.width, startY / this.height, 
+            startX / this.width,endY / this.height, 
+            endX / this.width ,endY / this.height
         ];
     }
 };

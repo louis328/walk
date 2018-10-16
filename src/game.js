@@ -64,6 +64,6 @@ onload = function(){
     keyManager.process();
     messenger.process();
     canvas.process();
-    setTimeout(func, 1000 / 30);
+    setTimeout(func, 1000 / 30);//fps30
   })();
 }

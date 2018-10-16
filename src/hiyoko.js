@@ -3,6 +3,7 @@ import {canvas} from './canvas.js';
 import {Polygon} from './polygon.js';
 import {keyManager} from './keyManager.js';
 import {messenger} from './messaenger.js';
+import {motionController} from './motion.js';
 
 export class Hiyoko extends gameObject{
     constructor() {
@@ -10,7 +11,9 @@ export class Hiyoko extends gameObject{
 
         this.image = new Polygon("hiyoko", 5);
         canvas.setTarget(this.image);
-
+        this.motion = motionController.create("./resource/motion_hiyoko.json");
+        this.motion.start("stand");
+        
         this.x = 0;
         this.y = 0;
         this.preX = 0;
@@ -19,6 +22,7 @@ export class Hiyoko extends gameObject{
         this.jamp = 0;
         this.halfWidth = 20;
         this.halfHeight = 20;
+        this.direction = 1;//右
         
         this.actionMap = new Object();//仮想ボタン入力と制御を繋げる
         this.actionMap['jump'] = false;
@@ -38,15 +42,31 @@ export class Hiyoko extends gameObject{
             }
         }
 
+        let isWalk = false;
         if(keyManager.getKeyState(65) || this.actionMap['left']){
+            this.motion.start("walk");
             this.x -= 8;
-            this.image.setUVArray([1,0, 0,0, 1,1, 0,1]);
+            this.direction = -1;
+            isWalk = true;
         }
         if(keyManager.getKeyState(68) || this.actionMap['right']){
+            this.motion.start("walk");
             this.x += 8;
-            this.image.setUVArray([0,0, 1,0, 0,1, 1,1]);
-            this.image.setPxToUVArray([10,10, 50,10, 10,50, 50,50]);
+            this.direction = 1;
+            isWalk = true;
         }
+        if(!isWalk){
+            this.motion.start("stand");
+        }
+
+        let uv = this.motion.getUV();
+        if(this.direction == 1){
+            this.image.setPxToUVArray(uv.start_x,uv.start_y, uv.end_x,uv.end_y);
+        }
+        else{
+            this.image.setPxToUVArray(uv.end_x,uv.start_y, uv.start_x,uv.end_y);
+        }
+
         if((keyManager.getKeyState(87) || this.actionMap['jump']) && this.jamp == 0){
             this.jump();
         }
