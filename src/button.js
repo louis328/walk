@@ -102,7 +102,7 @@ export class ButtonController extends gameObject{
             }
 
             
-            console.log(button_on.on + ", " + button_right.on + ", " + button_left.on);
+            //console.log(button_on.on + ", " + button_right.on + ", " + button_left.on);
         }
     }
 }

@@ -42,7 +42,6 @@ class Motion{
         if(this.isPlaying){
             ++this.frame;
         }
-        console.log(this.id + " : " + this.frame);
     }
     start(id){//現在のモーションと別のモーションを始動させる
         if(this.id === id){
