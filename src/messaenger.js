@@ -35,5 +35,10 @@ class Messenger {
         let reply = target.receive(message);
         return reply;
     }
+    remove(id){
+        if(this.objHash[id] != undefined){
+            delete this.objHash[id];
+        }
+    }
 }
 export const messenger = new Messenger();

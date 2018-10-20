@@ -45,6 +45,7 @@ export class Polygon {
         this.VBOList = [this.pos_vbo, this.tex_vbo];
         this.IBO = shader.create_ibo(gl, this.vertex_index);
         
+        canvas.setTarget(this);
     }
 
     getIndices(){

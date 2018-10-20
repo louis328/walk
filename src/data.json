@@ -7,6 +7,7 @@
         {"id": "button2","path": "./img/button1.png"},
         {"id": "button3", "path": "./img/button1.png"},
         {"id": "frame", "path": "./img/exterior/frame.png"},
-        {"id": "corner", "path": "./img/exterior/corner.png"}
+        {"id": "corner", "path": "./img/exterior/corner.png"},
+        {"id": "title", "path": "./img/title.png"}
     ]
 }

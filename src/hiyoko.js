@@ -10,10 +10,10 @@ export class Hiyoko extends gameObject{
         super("hiyoko");
 
         this.image = new Polygon("hiyoko", 5);
-        canvas.setTarget(this.image);
+
         this.motion = motionController.create("./resource/motion_hiyoko.json");
         this.motion.start("stand");
-        
+
         this.x = 0;
         this.y = 0;
         this.preX = 0;

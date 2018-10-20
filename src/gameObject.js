@@ -23,6 +23,9 @@ export class gameObject {
     send(message){
         messenger.receive(message);
     }
+    dead(){
+        messenger.remove(this.ID);
+    }
     getID(){
         return this.ID;
     }

@@ -11,7 +11,6 @@ class Button{
         this.y = y;
         this.image = new Polygon(name, 0);
         this.image.setPosition(x, y - canvas.getHeightDifference());
-        canvas.setTarget(this.image);
     }
 }
 export class ButtonController extends gameObject{

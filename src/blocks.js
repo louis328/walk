@@ -9,7 +9,6 @@ class Block{
         this.halfWidth = 32;
         this.halfHeight = 32;
         this.image = new Polygon("block", 7);
-        canvas.setTarget(this.image);
         this.image.setPosition(this.x, this.y);
     }
 }

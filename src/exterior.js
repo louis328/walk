@@ -11,47 +11,47 @@ export class Exterior extends gameObject{
         this.frameRight.setPosition(PLAY_WIDTH/2 + 8, 0);
         this.frameRight.setRotate(Math.PI / 2);
         this.frameRight.setScale((PLAY_HEIGHT+12)/16, 1);
-        canvas.setTarget(this.frameRight);
+  
 
         this.frameLeft = new Polygon("frame", 1);
         this.frameLeft.setPosition(-PLAY_WIDTH/2 - 8, 0);
         this.frameLeft.setRotate(Math.PI / 2);
         this.frameLeft.setScale((PLAY_HEIGHT+12)/16, 1);
-        canvas.setTarget(this.frameLeft);
+
 
         this.frameTop = new Polygon("frame", 1);
         this.frameTop.setPosition(0, PLAY_HEIGHT/2 + 8);
         this.frameTop.setScale((PLAY_WIDTH + 8)/16, 1);
-        canvas.setTarget(this.frameTop);
+
 
         this.frameBottom = new Polygon("frame", 1);
         this.frameBottom.setPosition(0, -PLAY_HEIGHT/2 - 8);
         this.frameBottom.setScale((PLAY_WIDTH + 8)/16, 1);
-        canvas.setTarget(this.frameBottom);
+
 
         {
             let cournerImage = new Polygon("corner", 1); 
             cournerImage.setPosition(0, 8 + (CANVAS_HEIGHT/2 - (CANVAS_HEIGHT/2 - (40 + PLAY_HEIGHT)) / 2) - canvas.getHeightDifference());
             cournerImage.setScale((CANVAS_WIDTH)/16, (8+ CANVAS_HEIGHT/2 - (40 + PLAY_HEIGHT)) / 16);
-            canvas.setTarget(cournerImage);
+
         }
         {
             let cournerImage = new Polygon("corner", 1); 
             cournerImage.setPosition(CANVAS_WIDTH / 2 + 4, 0 - canvas.getHeightDifference());
             cournerImage.setScale((CANVAS_WIDTH - PLAY_WIDTH) / 16, CANVAS_HEIGHT / 16);
-            canvas.setTarget(cournerImage);
+
         }
         {
             let cournerImage = new Polygon("corner", 1); 
             cournerImage.setPosition(-CANVAS_WIDTH / 2 - 4, 0 - canvas.getHeightDifference());
             cournerImage.setScale((CANVAS_WIDTH - PLAY_WIDTH) / 16, CANVAS_HEIGHT / 16);
-            canvas.setTarget(cournerImage);
+
         }
         {
             let cournerImage = new Polygon("corner", 1); 
             cournerImage.setPosition(0, -CANVAS_HEIGHT/2 + (40 + CANVAS_HEIGHT/2)/2 - canvas.getHeightDifference() - 4);
             cournerImage.setScale(CANVAS_WIDTH/16, (40 + CANVAS_HEIGHT/2)/16);
-            canvas.setTarget(cournerImage);
+
         }
     }
 }

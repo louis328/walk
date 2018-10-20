@@ -1,10 +1,10 @@
 import {canvas, CANVAS_WIDTH, CANVAS_HEIGHT, PC_MODE} from './canvas.js';
 import {messenger} from './messaenger.js';
-import {Hiyoko} from './hiyoko.js';
-import {Blocks} from './blocks.js';
+
 import {keyManager} from './keyManager.js';
 import { ButtonController } from './button.js';
 import { Exterior } from './exterior.js';
+import { TitleScene } from './scene/scene_title.js';
 
 onload = function(){
   document.documentElement.addEventListener('touchstart', function (e) {
@@ -52,11 +52,10 @@ onload = function(){
   while(!canvas.loaded()){
 
   }
-  let hiyoko = new Hiyoko();
-  let blocks = new Blocks();
-  let buttonController  = null;
+  let title = new TitleScene();
+
   if(!PC_MODE){
-    buttonController = new ButtonController();
+    let buttonController = new ButtonController();
     let exterior = new Exterior();
   }
   
