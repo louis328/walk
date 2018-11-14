@@ -24,7 +24,11 @@ export class gameObject {
         messenger.receive(message);
     }
     dead(){
+        this.destructor();
         messenger.remove(this.ID);
+    }
+    destructor(){
+
     }
     getID(){
         return this.ID;

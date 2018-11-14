@@ -7,7 +7,7 @@ export class TitleScene extends gameObject{
     constructor(){
         super('scene_title');
 
-        this.image = new Polygon("title", 2);
+        this.titleImage = new Polygon("title", 2);
         this.actionMap = new Object();
     }
 
@@ -25,5 +25,8 @@ export class TitleScene extends gameObject{
             this.actionMap['on'] = true;
         }
 
+    }
+    destructor(){
+        this.titleImage.dead();
     }
 }

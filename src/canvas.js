@@ -17,7 +17,7 @@ class Canvas {
     //document.getElementById('message').innerHTML = "<div>"+window.innerWidth + ":" + window.innerHeight+"</div>";
     //document.getElementById('message').innerHTML += "<div>"+CANVAS_WIDTH + ":" + CANVAS_HEIGHT+"</div>";
     try {
-      this.canvas = document.getElementById('canvas');
+      this.canvas = document.getElementById('mainCanvas');
       this.canvas.width = CANVAS_WIDTH;
       this.canvas.height = CANVAS_HEIGHT;
       this.gl = this.canvas.getContext('webgl') || this.canvas.getContext('experimental-webgl');
@@ -29,15 +29,20 @@ class Canvas {
       console.log("webgl非対応 2: " + e);
       return false;
     }
-
+    let canvas_2d = document.getElementById("frontCanvas");
+    canvas_2d.width = CANVAS_WIDTH;
+    canvas_2d.height = CANVAS_HEIGHT;
+    this.context_2d = canvas_2d.getContext("2d");
 
     this.gl.viewport(0, 0, VIEWPORT_WIDTH,VIEWPORT_HEIGHT);//800*800のビューポートを上下100カット表示で使う
     this.texture = {};
     this.texHash = {};
     this.texCounter = 0;
     this.texHashSize = 0;
-    this.drawTargets = new Array();
+    this.drawTargets = new Array();//描画するオブジェクトを格納
     this.shader = new Shader(this.gl);
+    this.blackOut = 0.0;
+    this.textArray = new Array();//描画するテキストを格納
 
     this.canvas.addEventListener('click', this.onClick, false);
     //document.getElementById('message').innerHTML = "webGL 初期化完了";
@@ -62,12 +67,25 @@ class Canvas {
     this.gl.activeTexture(this.gl.TEXTURE0);
 
     this.openTexture();
+
+    this.context_2d.font = "50px 'ＭＳ Ｐゴシック'";
+    
+   
   }
   //外部から呼び出すメソッド
   process(){
     this.start();
     this.draw();
     this.end();
+    this.context_2d.clearRect(CANVAS_WIDTH*0.5-PLAY_WIDTH*0.5, CANVAS_HEIGHT*0.5 - canvas.getHeightDifference() - PLAY_HEIGHT*0.5, PLAY_WIDTH, PLAY_HEIGHT);
+    this.context_2d.fillStyle = "rgba(0,0,0," + (this.blackOut) + ")";
+    this.context_2d.fillRect(CANVAS_WIDTH*0.5-PLAY_WIDTH*0.5, CANVAS_HEIGHT*0.5 - canvas.getHeightDifference() - PLAY_HEIGHT*0.5, PLAY_WIDTH, PLAY_HEIGHT);
+    for(let text of this.textArray){
+      this.context_2d.fillStyle = text.color;
+      this.context_2d.font = text.size + " 'ＭＳ Ｐゴシック'";
+      this.context_2d.fillText(text.text, CANVAS_WIDTH*0.5 + text.x, CANVAS_HEIGHT*0.5 -text.y - canvas.getHeightDifference());
+    }
+    
   }
   //ループ頭
   start() {
@@ -85,9 +103,12 @@ class Canvas {
       layerList.push(new Array());
     }
 
-    for (let i = 0; i < this.drawTargets.length; ++i) {
+    for (let i = this.drawTargets.length-1; i >= 0; i--) {
       let target = this.drawTargets[i];
       if(target.getInvisible() == true){continue;}
+      else if(target.isDead()){
+        this.drawTargets.splice(i,1);
+      }
       layerList[target.getLevel()].push(target);
     }
     for (var i = (layerList.length-1); i >= 0; --i) {
@@ -203,7 +224,7 @@ class Canvas {
   getGL() {
     return this.gl;
   }
-  setTarget(polygon) {
+  putImage(polygon) {
     this.drawTargets.push(polygon);
   }
   isLoaded(){

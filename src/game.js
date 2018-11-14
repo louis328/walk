@@ -49,9 +49,11 @@ onload = function(){
     }
     e.preventDefault();
   }, {passive: false});
+  
   while(!canvas.loaded()){
 
   }
+
   let title = new TitleScene();
 
   if(!PC_MODE){

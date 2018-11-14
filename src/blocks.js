@@ -11,6 +11,9 @@ class Block{
         this.image = new Polygon("block", 7);
         this.image.setPosition(this.x, this.y);
     }
+    dead(){
+        this.image.dead();
+    }
 }
 export class Blocks extends gameObject{
     constructor(){
@@ -18,7 +21,7 @@ export class Blocks extends gameObject{
         this.blocks = new Array();
         this.blocks.push(new Block(-60, 0));
         this.blocks.push(new Block(300, -225));
-        this.blocks.push(new Block(150, -201));
+        this.blocks.push(new Block(150, -225));
         this.blocks.push(new Block(-150, 20));
         this.blocks.push(new Block(0, -230));
         this.blocks.push(new Block(-150, -210));
@@ -26,8 +29,23 @@ export class Blocks extends gameObject{
         for(let i=0;i<16;++i){
             this.blocks.push(new Block(64*i - 450, -300));
         }
-        this.blocks.push(new Block(-230, -330));
         this.blocks.push(new Block(-310, -270));
+        
+        for(let i=0;i<7;++i){
+            this.blocks.push(new Block(-450, 130 - 66*i));
+            this.blocks.push(new Block( 450, 130 - 66*i));
+        }
+        this.blocks.push(new Block(-450, 30));
+        this.blocks.push(new Block(-450, -20));
+        this.blocks.push(new Block(-450, -80));
+        this.blocks.push(new Block(-450, -150));
+        this.blocks.push(new Block(-450, -220));
+
+        this.blocks.push(new Block( 450, 30));
+        this.blocks.push(new Block( 450, -20));
+        this.blocks.push(new Block( 450, -80));
+        this.blocks.push(new Block( 450, -150));
+        this.blocks.push(new Block( 450, -220));
     }
     process(){
 
@@ -54,18 +72,6 @@ export class Blocks extends gameObject{
                 let b_right = block.x + block.halfWidth;
                 let b_left = block.x - block.halfWidth;
                 if(a_bottom < b_top && a_top > b_bottom && a_left < b_right && a_right > b_left){
-                    if(!(p_bottom < b_top && p_top > b_bottom)){
-                        //console.log(" 縦向きに衝突");
-                        if(mes['vecY'] == 1){
-                            //上向きに衝突
-                            ret['y'] = mes['y'] - (a_top - b_bottom);
-                        }
-                        else{
-                            //下向きに衝突(着地)
-                            ret['y'] = mes['y'] + (b_top - a_bottom);
-                            ret['landing'] = true;
-                        }
-                    }
                     if(p_bottom < b_top){
                         if(!(p_left < b_right) || !(p_right > b_left)){
                             if(mes['vecX'] == 1){
@@ -78,18 +84,45 @@ export class Blocks extends gameObject{
                             }
                         }
                     }
-                    /*mes['x'] = ret['x'];
-                    mes['y'] = ret['y'];
-                    a_top = mes['y'] + mes['harfH'];
-                    a_bottom = mes['y'] - mes['harfH'];
-                    a_right = mes['x'] + mes['halfW'];
-                    a_left = mes['x'] - mes['halfW'];*/ 
                     ret['result'] = true;
-                    
+                    a_top = ret['y'] + mes['halfH'];
+                    a_bottom = ret['y'] - mes['halfH'];
+                    a_right = ret['x'] + mes['halfW'];
+                    a_left = ret['x'] - mes['halfW'];   
+                }
+            }
+            for(let block of this.blocks){
+                let b_top = block.y + block.halfHeight;
+                let b_bottom = block.y - block.halfHeight;
+                let b_right = block.x + block.halfWidth;
+                let b_left = block.x - block.halfWidth;
+                if(a_bottom < b_top && a_top > b_bottom && a_left < b_right && a_right > b_left){
+                    if(!(p_bottom < b_top && p_top > b_bottom)){
+                        //console.log(" 縦向きに衝突");
+                        if(mes['vecY'] == 1){
+                            //上向きに衝突
+                            ret['y'] = mes['y'] - (a_top - b_bottom);
+                        }
+                        else{
+                            //下向きに衝突(着地)
+                            ret['y'] = mes['y'] + (b_top - a_bottom);
+                            ret['landing'] = true;
+                        }
+                    }
+
+                    ret['result'] = true;
+                    a_top = ret['y'] + mes['halfH'];
+                    a_bottom = ret['y'] - mes['halfH'];
+                    a_right = ret['x'] + mes['halfW'];
+                    a_left = ret['x'] - mes['halfW'];   
                 }
             }
             return ret;
         }
-        
+    }
+    destructor(){
+        for(let block of this.blocks){
+            block.dead();
+        }
     }
 }

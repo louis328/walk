@@ -19,7 +19,7 @@ export class Hiyoko extends gameObject{
         this.preX = 0;
         this.preY = 0;
         this.speedY = 0;
-        this.jamp = 0;
+        this.jamp = 1;
         this.halfWidth = 20;
         this.halfHeight = 20;
         this.direction = 1;//右
@@ -67,7 +67,7 @@ export class Hiyoko extends gameObject{
             this.image.setPxToUVArray(uv.end_x,uv.start_y, uv.start_x,uv.end_y);
         }
 
-        if((keyManager.getKeyState(87) || this.actionMap['jump']) && this.jamp == 0){
+        if((keyManager.isKeyJustDown(87) || this.actionMap['jump']) && this.jamp == 0){
             this.jump();
         }
         
@@ -95,6 +95,10 @@ export class Hiyoko extends gameObject{
             }
         }
         this.image.setPosition(this.x, this.y);
+        message['message'] = 'player_position';
+        message['toID'] = "";
+        this.send(message);
+
         this.actionMap['jump'] = false;
         this.actionMap['right'] = false;
         this.actionMap['left'] = false;
@@ -113,7 +117,7 @@ export class Hiyoko extends gameObject{
             this.image.setPosition(this.x, this.y);*/
         }
         else if(message === 'button_on'){
-            this.actionMap['jump'] = true;
+            this.actionMap['jump'] = true;console.log("jump");
         }
         else if(message === 'button_right'){
             this.actionMap['right'] = true;
@@ -121,5 +125,8 @@ export class Hiyoko extends gameObject{
         else if(message === 'button_left'){
             this.actionMap['left'] = true;
         }
+    }
+    destructor(){
+        this.image.dead();
     }
 }

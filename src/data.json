@@ -8,6 +8,9 @@
         {"id": "button3", "path": "./img/button1.png"},
         {"id": "frame", "path": "./img/exterior/frame.png"},
         {"id": "corner", "path": "./img/exterior/corner.png"},
-        {"id": "title", "path": "./img/title.png"}
+        {"id": "title", "path": "./img/title.png"},
+        {"id": "star", "path": "./img/star.png"},
+        {"id": "tiara", "path": "./img/tiara.png"},
+        {"id": "result", "path": "./img/result.png"}
     ]
 }

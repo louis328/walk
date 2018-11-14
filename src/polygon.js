@@ -44,10 +44,15 @@ export class Polygon {
         this.tex_vbo = shader.create_vbo(gl, this.textureCoord);
         this.VBOList = [this.pos_vbo, this.tex_vbo];
         this.IBO = shader.create_ibo(gl, this.vertex_index);
-        
-        canvas.setTarget(this);
+        this.deadFlag = false;
+        canvas.putImage(this);
     }
-
+    dead(){
+        this.deadFlag = true;
+    }
+    isDead(){
+        return this.deadFlag;
+    }
     getIndices(){
         return this.indices;
     }

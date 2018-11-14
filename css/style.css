@@ -11,9 +11,12 @@ canvas {
         height: 600;
         display: block;
 }
-.text {
+#frontCanvas{
         position:absolute;
-        font-size:2em;
-        color: blue;
-        user-select: none;
+        z-index: 50;
 }
+#mainCanvas{
+        position: absolute;
+        z-index: 1;
+}
+
