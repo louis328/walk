@@ -7,6 +7,7 @@ body {
         background-color: rgb(255, 255, 255);
 }
 canvas {
+        position: relative;
         width: 800;
         height: 600;
         display: block;
