@@ -1,7 +1,7 @@
 import {gameObject} from '../gameObject.js';
 import {keyManager} from '../keyManager.js';
 import {Polygon} from '../polygon.js';
-import {GameScene} from './scene_game.js';
+import {OpeningScene} from './scene_opening.js';
 
 export class TitleScene extends gameObject{
     constructor(){
@@ -14,7 +14,7 @@ export class TitleScene extends gameObject{
     process(){
         if(this.actionMap['on'] == true || keyManager.getKeyState(87)){
             this.dead();
-            let game = new GameScene();
+            let game = new OpeningScene();
         }
     }
 

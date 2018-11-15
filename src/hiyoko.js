@@ -13,6 +13,8 @@ export class Hiyoko extends gameObject{
 
         this.motion = motionController.create("./resource/motion_hiyoko.json");
         this.motion.start("stand");
+        let uv = this.motion.getUV();
+        this.image.setPxToUVArray(uv.start_x,uv.start_y, uv.end_x,uv.end_y);
 
         this.x = 0;
         this.y = 0;
@@ -31,6 +33,7 @@ export class Hiyoko extends gameObject{
         this.time = 0;
     }
     process(){
+
         this.preX = this.x;
         this.preY = this.y;
 
