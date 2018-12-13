@@ -1,6 +1,6 @@
 import {gameObject} from './gameObject.js';
 import {canvas} from './canvas.js';
-import {Polygon} from './polygon.js';
+import * as polygon from './polygon.js';
 import {keyManager} from './keyManager.js';
 import {messenger} from './messaenger.js';
 import {motionController} from './motion.js';
@@ -9,7 +9,7 @@ export class Hiyoko extends gameObject{
     constructor() {
         super("hiyoko");
 
-        this.image = new Polygon("hiyoko", 5);
+        this.image = new polygon.Polygon("hiyoko", polygon.DRAW_LV_PLAYER);
 
         this.motion = motionController.create("./resource/motion_hiyoko.json");
         this.motion.start("stand");
@@ -46,13 +46,13 @@ export class Hiyoko extends gameObject{
         }
 
         let isWalk = false;
-        if(keyManager.getKeyState(65) || this.actionMap['left']){
+        if(this.actionMap['left']){
             this.motion.start("walk");
             this.x -= 8;
             this.direction = -1;
             isWalk = true;
         }
-        if(keyManager.getKeyState(68) || this.actionMap['right']){
+        if(this.actionMap['right']){
             this.motion.start("walk");
             this.x += 8;
             this.direction = 1;
@@ -70,7 +70,7 @@ export class Hiyoko extends gameObject{
             this.image.setPxToUVArray(uv.end_x,uv.start_y, uv.start_x,uv.end_y);
         }
 
-        if((keyManager.isKeyJustDown(87) || this.actionMap['jump']) && this.jamp == 0){
+        if((this.actionMap['jump']) && this.jamp == 0){
             this.jump();
         }
         
@@ -120,7 +120,7 @@ export class Hiyoko extends gameObject{
             this.image.setPosition(this.x, this.y);*/
         }
         else if(message === 'button_on'){
-            this.actionMap['jump'] = true;console.log("jump");
+            this.actionMap['jump'] = true;
         }
         else if(message === 'button_right'){
             this.actionMap['right'] = true;

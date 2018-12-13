@@ -1,6 +1,6 @@
 import {canvas, CANVAS_WIDTH, CANVAS_HEIGHT, PC_MODE} from './canvas.js';
 import {messenger} from './messaenger.js';
-
+import { stageManager } from './stageManager.js';
 import {keyManager} from './keyManager.js';
 import { ButtonController } from './button.js';
 import { Exterior } from './exterior.js';
@@ -50,21 +50,26 @@ onload = function(){
     e.preventDefault();
   }, {passive: false});
   
-  while(!canvas.loaded()){
-
-  }
-
-  let title = new TitleScene();
-
-  if(!PC_MODE){
-    let buttonController = new ButtonController();
-    let exterior = new Exterior();
-  }
+  stageManager.init();//画像のロードがある場合はループ前に初期化
   
+  let loaded = false;
   (function func (){
-    keyManager.process();
-    messenger.process();
-    canvas.process();
+    if(canvas.getLoadingCount() === 0){
+      if(loaded){
+        keyManager.process();
+        messenger.process();
+        canvas.process();
+      }
+      else{
+        loaded = true;
+        let title = new TitleScene();
+        if(!PC_MODE){
+          let buttonController = new ButtonController();
+          let exterior = new Exterior();
+        }
+      }
+    }
+    
     setTimeout(func, 1000 / 30);//fps30
   })();
 }

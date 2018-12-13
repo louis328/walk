@@ -18,6 +18,9 @@ class Messenger {
             }
         }
     }
+    getObject(id){
+        return this.objHash[id];
+    }
     receive(message){
         this.messageQueue.push(message);
     }

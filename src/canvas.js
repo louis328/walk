@@ -46,6 +46,7 @@ class Canvas {
 
     this.canvas.addEventListener('click', this.onClick, false);
     //document.getElementById('message').innerHTML = "webGL 初期化完了";
+    this.loadingCount = 0;
     this.loadComplete = false;
   }
   onClick(e){
@@ -66,7 +67,7 @@ class Canvas {
     this.gl.depthFunc(this.gl.LEQUAL);
     this.gl.activeTexture(this.gl.TEXTURE0);
 
-    this.openTexture();
+    this.openTexture("./resource/image.json");
 
     this.context_2d.font = "50px 'ＭＳ Ｐゴシック'";
     
@@ -162,21 +163,21 @@ class Canvas {
     this.gl.flush();
     //g_gameData.clickOff();
   }
-  openTexture(jsonTexture) {
-    var req = new XMLHttpRequest();
+  openTexture(filepath) {
+    let req = new XMLHttpRequest();
     req.onreadystatechange = function(){
       //console.log(req);
     };
-    req.open("GET","./src/data.json",false);
+    req.open("GET",filepath,false);
     req.send(null);
     //canvas.openTexture(req.responseText);
-    jsonTexture = req.responseText;
-    var json = JSON.parse(jsonTexture);
-    var array = json.images;
+    let jsonTexture = req.responseText;
+    let json = JSON.parse(jsonTexture);
+    let array = json.images;
     //console.log(array);
     this.texHashSize = array.length;
-    for (var i = 0; i < array.length; ++i) {
-      var obj = array[i];
+    for (let i = 0; i < array.length; ++i) {
+      let obj = array[i];
       this.createTexture(obj.path, obj.id);
     }
   }
@@ -190,6 +191,7 @@ class Canvas {
     img.src = source;
     var gl = this.gl;
     var canvas = this;
+    ++canvas.loadingCount;
     // データのオンロードをトリガーにする
     img.onload = function () {
       
@@ -210,6 +212,8 @@ class Canvas {
       canvas.texture[canvas.texCounter] = tex;
       canvas.texHash[name] = canvas.texCounter;
       ++canvas.texCounter;
+      --canvas.loadingCount;
+      console.log("loadingCount:" + canvas.loadingCount);
     };
   }
   getTexture(name){
@@ -224,6 +228,9 @@ class Canvas {
   getGL() {
     return this.gl;
   }
+  getLoadingCount(){
+    return this.loadingCount;
+  }
   putImage(polygon) {
     this.drawTargets.push(polygon);
   }
@@ -232,7 +239,7 @@ class Canvas {
   }
   loaded(){
     //設定された画像数と読み込んだ画像数が一致するか否か
-    console.log(this.texCounter);
+    //console.log(this.texCounter);
     return (this.texCounter == this.texHashSize);
   }
 }

@@ -1,7 +1,8 @@
 import {gameObject} from './gameObject.js';
 import {canvas, CANVAS_WIDTH, CANVAS_HEIGHT} from './canvas.js';
-import {Polygon} from './polygon.js';
+import * as polygon from './polygon.js';
 import {messenger} from './messaenger.js';
+import {keyManager} from './keyManager.js';
 
 class Button{
     constructor(x,y,name){
@@ -9,7 +10,7 @@ class Button{
         this.id = -1;//タッチイベントのidentifier
         this.x = x;
         this.y = y;
-        this.image = new Polygon(name, 0);
+        this.image = new polygon.Polygon(name, polygon.DRAW_LV_GUI);
         this.image.setPosition(x, y - canvas.getHeightDifference());
     }
 }
@@ -29,18 +30,18 @@ export class ButtonController extends gameObject{
         let button_on = this.buttonList[0];
         let button_right = this.buttonList[1];
         let button_left = this.buttonList[2];
-        if(button_on.on == true){
+        if(button_on.on == true || keyManager.isKeyJustDown(87)){//Wキー
             let newMessage = new Object();
             newMessage['message'] = 'button_on';
             this.send(newMessage);
             button_on.on = false;
         }
-        if(button_right.on == true){
+        if(button_right.on == true || keyManager.getKeyState(68)){
             let newMessage = new Object();
             newMessage['message'] = 'button_right';
             this.send(newMessage);
         }
-        if(button_left.on == true){
+        if(button_left.on == true || keyManager.getKeyState(65)){
             let newMessage = new Object();
             newMessage['message'] = 'button_left';
             this.send(newMessage);

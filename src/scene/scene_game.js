@@ -1,19 +1,17 @@
 import {gameObject} from '../gameObject.js';
 import {Hiyoko} from '../hiyoko.js';
-import {Blocks} from '../blocks.js';
-import {Stars} from '../stars.js';
+
 import { TitleScene } from './scene_title.js';
 import { Text } from '../text.js';
 import { Polygon} from '../polygon.js';
 
 export class GameScene extends gameObject{
-    constructor(){
+    constructor(container){
         super('scene_game');
         this.actionMap = new Object();
 
         this.hiyoko = new Hiyoko();
-        this.blocks = new Blocks();
-        this.stars = new Stars();
+        this.container = container;//オブジェクト管理
 
         this.time = 0;
         this.timeText = new Text("0",-380,300);
@@ -31,23 +29,23 @@ export class GameScene extends gameObject{
                 this.result.texts.push(text);
             }
             else if(this.result.time == 100){
-                let text = new Text("to be continued...",-100,-90);
+                let text = new Text("end.",50,-100);
                 text.size = "40px";
                 this.result.texts.push(text);
             }
             else if(this.result.time == 0){
-                this.dead();
+                //this.dead();
             }
         }
         else{
-            ++this.time;
+            if(this.time < 999*30){++this.time;}
             this.timeText.text = "" + Math.floor(this.time / 30);
         }
         
     }
     receive(mes){
         let message = mes['message'];
-        if(message === 'clear'){console.log("clear!");
+        if(message === 'clear'){
             this.result = new Object();
             this.result.time = 7*30;
             this.result.image = new Polygon("result", 5);
@@ -55,15 +53,24 @@ export class GameScene extends gameObject{
             let text = new Text("result",-65,110);
             this.result.texts.push(text);
         }
+        else if(message === 'button_on'){
+            if(this.result != null){
+                if(this.result.time < 100){
+                    this.dead();
+                }
+            }
+        }
     }
     destructor(){
         this.result.image.dead();
         for(let text of this.result.texts){
             text.dead();
         }
-        this.blocks.dead();
+
+        this.container.dead();
+
         this.hiyoko.dead();
-        this.stars.dead();
+        
         this.timeText.dead();
         let title = new TitleScene();
     }

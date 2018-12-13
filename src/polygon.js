@@ -1,6 +1,20 @@
 import {canvas} from './canvas.js';
 import * as shader from "./shader.js";
 
+export const DRAW_LV_GUI = 0;
+export const DRAW_LV_EXTERIOR = 1;
+
+
+export const DRAW_LV_OBJ_FRONT = 4;
+
+export const DRAW_LV_PLAYER = 6;
+
+export const DRAW_LV_ITEM = 8;
+
+export const DRAW_LV_OBJ_BACK = 10;
+
+export const DRAW_LV_BACKGROUND = 12;
+
 export class Polygon {
     constructor(name, level){
         this.name = name;
