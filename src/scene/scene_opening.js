@@ -11,7 +11,7 @@ export class OpeningScene extends gameObject{
         this.opening = new Object();
         this.opening.time = 70;
         this.opening.text = new Text("🐤 × 3",-100,0);
-        canvas.blackOut = 1.0;
+        
     }
 
     process(){

@@ -4,6 +4,7 @@ import * as polygon from '../polygon.js';
 import {OpeningScene} from './scene_opening.js';
 import { Text } from '../text.js';
 import { stageManager } from '../stageManager.js';
+import {canvas} from '../canvas.js';
 
 export class TitleScene extends gameObject{
     constructor(){
@@ -40,6 +41,7 @@ export class TitleScene extends gameObject{
                 this.dead();
                 stageManager.initStage(this.selectStage);
                 let game = new OpeningScene();
+                canvas.blackOut = 1.0;
             }
         }
         
